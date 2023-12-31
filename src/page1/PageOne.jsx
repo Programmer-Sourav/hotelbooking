@@ -1,6 +1,15 @@
 import React from 'react';
 import "./css/index.css";
 import "./css/bootstrap.min.css"
+import  FirstIcon from "./images/icon/3125713.png"
+import  HotelIcon from "./images/icon/hotel.png"
+import VillaIcon from "./images/icon/villa.png"
+import HolidayIcon from "./images/icon/holiday.png"
+import TrainIcon from "./images/icon/train.png"
+import BusIcon from "./images/icon/bus.png"
+import CabIcon from "./images/icon/cab.png"
+import ForexIcon from "./images/icon/forex.png"
+import TravelIcon from "./images/icon/travel.png"
 
 
 export default function PageOne() {
@@ -34,57 +43,57 @@ export default function PageOne() {
                             <ul className="header-icon">
                             <li>
                         <a href="#">
-                            <img class="header-img" src="images/icon/3125713.png" alt=""/><br/>
+                            <img class="header-img" src= {FirstIcon} alt=""/><br/>
                             Flights
                         </a>
                     </li>
                     <li>
                         <a href="#">
-                            <img class="header-img" src="images/icon/hotel.png" alt=""/><br/>
+                            <img class="header-img" src={HotelIcon} alt=""/><br/>
                             Hotels
                         </a>
                     </li>
                     <li>
                         <a href="#">
                             <span class="icon-center">
-                                <img class="header-img" src="images/icon/villa.png" alt=""/> </span><br/>
+                                <img class="header-img" src={VillaIcon} alt=""/> </span><br/>
                             Homestays<br/>& Villas
                         </a>
                     </li>
                     <li>
                         <a href="#">
-                            <img class="header-img" src="images/icon/holiday.png" alt=""/><br/>
+                            <img class="header-img" src={HolidayIcon} alt=""/><br/>
                             Holiday <br/> Packages
                         </a>
                     </li>
                     <li>
                         <a href="#">
-                            <img class="header-img" src="images/icon/train.png" alt=""/><br/>
+                            <img class="header-img" src={TrainIcon} alt=""/><br/>
                             Trains
                         </a>
                     </li>
                     <li>
                         <a href="#">
-                            <img class="header-img" src="images/icon/bus.png" alt=""/><br/>
+                            <img class="header-img" src={BusIcon} alt=""/><br/>
                             Buses
                         </a>
                     </li>
                     <li>
                         <a href="#">
-                            <img class="header-img" src="images/icon/cab.png" alt=""/><br/>
+                            <img class="header-img" src={CabIcon} alt=""/><br/>
                             Cabs
                         </a>
                     </li>
                     <li>
                         <a href="#">
-                            <span class="icon-center"><img class="header-img" src="images/icon/forex.png"
+                            <span class="icon-center"><img class="header-img" src={ForexIcon}
                                     alt=""/></span><br/>
                             Forex Card<br/>& Currency
                         </a>
                     </li>
                     <li>
                         <a href="#">
-                            <img class="header-img" src="images/icon/travel.png" alt=""/><br/>
+                            <img class="header-img" src={TravelIcon} alt=""/><br/>
                             Travel <br/> Insurance
                         </a>
                     </li>
