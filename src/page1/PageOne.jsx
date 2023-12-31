@@ -48,57 +48,57 @@ export default function PageOne() {
                             <ul className="header-icon">
                             <li>
                         <a href="#">
-                            <img class="header-img" src= {FirstIcon} alt=""/><br/>
+                            <img className="header-img" src= {FirstIcon} alt=""/><br/>
                             Flights
                         </a>
                     </li>
                     <li>
                         <a href="#">
-                            <img class="header-img" src={HotelIcon} alt=""/><br/>
+                            <img className="header-img" src={HotelIcon} alt=""/><br/>
                             Hotels
                         </a>
                     </li>
                     <li>
                         <a href="#">
-                            <span class="icon-center">
-                                <img class="header-img" src={VillaIcon} alt=""/> </span><br/>
+                            <span className="icon-center">
+                                <img className="header-img" src={VillaIcon} alt=""/> </span><br/>
                             Homestays<br/>& Villas
                         </a>
                     </li>
                     <li>
                         <a href="#">
-                            <img class="header-img" src={HolidayIcon} alt=""/><br/>
+                            <img className="header-img" src={HolidayIcon} alt=""/><br/>
                             Holiday <br/> Packages
                         </a>
                     </li>
                     <li>
                         <a href="#">
-                            <img class="header-img" src={TrainIcon} alt=""/><br/>
+                            <img className="header-img" src={TrainIcon} alt=""/><br/>
                             Trains
                         </a>
                     </li>
                     <li>
                         <a href="#">
-                            <img class="header-img" src={BusIcon} alt=""/><br/>
+                            <img className="header-img" src={BusIcon} alt=""/><br/>
                             Buses
                         </a>
                     </li>
                     <li>
                         <a href="#">
-                            <img class="header-img" src={CabIcon} alt=""/><br/>
+                            <img className="header-img" src={CabIcon} alt=""/><br/>
                             Cabs
                         </a>
                     </li>
                     <li>
                         <a href="#">
-                            <span class="icon-center"><img class="header-img" src={ForexIcon}
+                            <span className="icon-center"><img className="header-img" src={ForexIcon}
                                     alt=""/></span><br/>
                             Forex Card<br/>& Currency
                         </a>
                     </li>
                     <li>
                         <a href="#">
-                            <img class="header-img" src={TravelIcon} alt=""/><br/>
+                            <img className="header-img" src={TravelIcon} alt=""/><br/>
                             Travel <br/> Insurance
                         </a>
                     </li>
@@ -136,28 +136,28 @@ export default function PageOne() {
                 </header>
 
                 <main>
-                <div class="main-detail-body">
+                <div className="main-detail-body">
 
         
 
-<div class="main-body">
+<div className="main-body">
     {/* <!--  --> */}
-    <div class="main-body-header">
-        <div class="radio-form">
+    <div className="main-body-header">
+        <div className="radio-form">
             <form action="">
                 <input type="radio" id="" name="" value=""/>
-                <label class="upto-group" for="">Upto 4 Rooms</label>
+                <label className="upto-group" for="">Upto 4 Rooms</label>
                 <input type="radio" id="" name="" value=""/>
-                <label class="upto-group" for="">Group Deals</label>
+                <label className="upto-group" for="">Group Deals</label>
             </form>
         </div>
         {/* <!--  --> */}
         <div>
-            <b class="new">NEW</b>
+            <b className="new">NEW</b>
 
         </div>
         {/* <!--  --> */}
-        <div class="book-property">
+        <div className="book-property">
             <p>Book Domestic and International Property Online. To list your property <a href="#">Click Here</a>
             </p>
         </div>
@@ -167,42 +167,42 @@ export default function PageOne() {
     {/* <!-- main main section --> */}
     <section>
         {/* <!-- parent div --> */}
-        <div class="parent-flex">
+        <div className="parent-flex">
 
-            <div class="flexbox">
+            <div className="flexbox">
                 <b>City Property Name or
                     Location</b>
                     <br/>
-                    <input class="location-field" type="text" placeholder="GOA"/><br/>
+                    <input className="location-field" type="text" placeholder="GOA"/><br/>
                     <span>India</span>
             </div>
             {/* <!--  --> */}
-            <div class="flexbox">
+            <div className="flexbox">
                 {/* <!--  --> */}
                 <div>
 
 
                     {/* <!-- modal -->
                     <!-- Button trigger modal --> */}
-                    <button type="button" class="btn btn-check-in" data-bs-toggle="modal"
+                    <button type="button" className="btn btn-check-in" data-bs-toggle="modal"
                         data-bs-target="#staticBackdrop">
-                        Check-In <i class="fa-solid fa-angle-down"></i> <br/>
-                        <p class="date-check-in"><span>26</span> Dec,2023</p>
+                        Check-In <i className="fa-solid fa-angle-down"></i> <br/>
+                        <p className="date-check-in"><span>26</span> Dec,2023</p>
                         <span>Monday</span>
                     </button>
 
                     {/* <!-- Modal --> */}
-                    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static"
+                    <div className="modal fade" id="staticBackdrop" data-bs-backdrop="static"
                         data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel"
                         aria-hidden="true">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h1 class="modal-title fs-5" id="staticBackdropLabel"> </h1>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                        <div className="modal-dialog">
+                            <div className="modal-content">
+                                <div className="modal-header">
+                                    <h1 className="modal-title fs-5" id="staticBackdropLabel"> </h1>
+                                    <button type="button" className="btn-close" data-bs-dismiss="modal"
                                         aria-label="Close"></button>
                                 </div>
-                                <div class="modal-body">
+                                <div className="modal-body">
                                     {/* <!-- modal body calendar --> */}
 
 
@@ -218,32 +218,32 @@ export default function PageOne() {
 
             </div>
             {/* <!--  --> */}
-            <div class="flexbox">
+            <div className="flexbox">
                 {/* <!--  --> */}
                 <div>
 
 
                     {/* <!-- modal -->
                     <!-- Button trigger modal --> */}
-                    <button type="button" class="btn btn-check-in" data-bs-toggle="modal"
+                    <button type="button" className="btn btn-check-in" data-bs-toggle="modal"
                         data-bs-target="#staticBackdrop">
-                        Check-Out <i class="fa-solid fa-angle-down"></i> <br/>
-                        <p class="date-check-in"><span>28</span> Dec,2023</p>
+                        Check-Out <i className="fa-solid fa-angle-down"></i> <br/>
+                        <p className="date-check-in"><span>28</span> Dec,2023</p>
                         <span>Wednesday</span>
                     </button>
 
                     {/* <!-- Modal --> */}
-                    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static"
+                    <div className="modal fade" id="staticBackdrop" data-bs-backdrop="static"
                         data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel"
                         aria-hidden="true">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h1 class="modal-title fs-5" id="staticBackdropLabel"> </h1>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                        <div className="modal-dialog">
+                            <div className="modal-content">
+                                <div className="modal-header">
+                                    <h1 className="modal-title fs-5" id="staticBackdropLabel"> </h1>
+                                    <button type="button" className="btn-close" data-bs-dismiss="modal"
                                         aria-label="Close"></button>
                                 </div>
-                                <div class="modal-body">
+                                <div className="modal-body">
                                     {/* <!-- modal body calendar --> */}
 
 
@@ -261,30 +261,30 @@ export default function PageOne() {
 
             </div>
             {/* <!--  --> */}
-            <div class="flexbox">
+            <div className="flexbox">
                 {/* <!--  --> */}
                 {/* <!-- Button trigger modal --> */}
-                <button type="button" class="btn btn-check-in" data-bs-toggle="modal"
+                <button type="button" className="btn btn-check-in" data-bs-toggle="modal"
                     data-bs-target="#exampleModal">
-                    <p>Rooms & Guests <i class="fa-solid fa-angle-down"></i></p><br/>
-                    <p class=""><span>Rooms</span>, Adults</p>
+                    <p>Rooms & Guests <i className="fa-solid fa-angle-down"></i></p><br/>
+                    <p className=""><span>Rooms</span>, Adults</p>
                     <span>& Children</span>
                 </button>
 
                 {/* <!-- Modal --> */}
-                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                <div className="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
                     aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h1 class="modal-title fs-5" id="exampleModalLabel"></h1>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                    <div className="modal-dialog">
+                        <div className="modal-content">
+                            <div className="modal-header">
+                                <h1 className="modal-title fs-5" id="exampleModalLabel"></h1>
+                                <button type="button" className="btn-close" data-bs-dismiss="modal"
                                     aria-label="Close"></button>
                             </div>
-                            <div class="modal-body">
+                            <div className="modal-body">
                                 {/* <!--  -->
                                 <!-- Rooms --> */}
-                                <div class="modal-rooms">
+                                <div className="modal-rooms">
                                     <div>
 
                                         <b>Rooms</b>
@@ -303,7 +303,7 @@ export default function PageOne() {
 
                                 </div>
                                 {/* <!-- adults --> */}
-                                <div class="modal-rooms">
+                                <div className="modal-rooms">
                                     <div>
 
                                         <b>Adults</b>
@@ -323,7 +323,7 @@ export default function PageOne() {
                                 </div>
 
                                 {/* <!-- Childrens --> */}
-                                <div class="modal-rooms">
+                                <div className="modal-rooms">
                                     <div>
 
                                         <b>Children</b>
@@ -356,10 +356,10 @@ export default function PageOne() {
                                 </div>
 
                             </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary"
+                            <div className="modal-footer">
+                                <button type="button" className="btn btn-secondary"
                                     data-bs-dismiss="modal">Close</button>
-                                <button type="button" class="btn btn-primary">Apply</button>
+                                <button type="button" className="btn btn-primary">Apply</button>
                             </div>
                         </div>
                     </div>
@@ -368,30 +368,30 @@ export default function PageOne() {
 
             </div>
             {/* <!--  --> */}
-            <div class="flexbox">
+            <div className="flexbox">
                 {/* <!--  -->
                 <!--  -->
                 <!-- Button trigger modal --> */}
-                <button type="button" class="btn btn-check-in" data-bs-toggle="modal"
+                <button type="button" className="btn btn-check-in" data-bs-toggle="modal"
                     data-bs-target="#exampleModal">
-                    <p>Price Per Night <i class="fa-solid fa-angle-down"></i></p><br/>
-                    <p class=""><span>₹0-₹1500</span>,₹1500-₹2500...</p>
+                    <p>Price Per Night <i className="fa-solid fa-angle-down"></i></p><br/>
+                    <p className=""><span>₹0-₹1500</span>,₹1500-₹2500...</p>
                 </button>
 
                 {/* <!-- Modal --> */}
-                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                <div className="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
                     aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h1 class="modal-title fs-5" id="exampleModalLabel"></h1>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                    <div className="modal-dialog">
+                        <div className="modal-content">
+                            <div className="modal-header">
+                                <h1 className="modal-title fs-5" id="exampleModalLabel"></h1>
+                                <button type="button" className="btn-close" data-bs-dismiss="modal"
                                     aria-label="Close"></button>
                             </div>
-                            <div class="modal-body">
+                            <div className="modal-body">
                                 {/* <!--  -->
                                 <!-- per night --> */}
-                                <div class="modal-rooms">
+                                <div className="modal-rooms">
                                     <div>
 
                                         <b>Per Night</b>
@@ -410,7 +410,7 @@ export default function PageOne() {
 
                                 </div>
                                 {/* <!-- adults --> */}
-                                <div class="modal-rooms">
+                                <div className="modal-rooms">
                                     <div>
 
                                         <b>VIP</b>
@@ -430,7 +430,7 @@ export default function PageOne() {
                                 </div>
 
                                 {/* <!-- Childrens --> */}
-                                <div class="modal-rooms">
+                                <div className="modal-rooms">
                                     <div>
 
                                         <b>Packages</b>
@@ -451,10 +451,10 @@ export default function PageOne() {
                                 </div>
 
                             </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary"
+                            <div className="modal-footer">
+                                <button type="button" className="btn btn-secondary"
                                     data-bs-dismiss="modal">Close</button>
-                                <button type="button" class="btn btn-primary">Apply</button>
+                                <button type="button" className="btn btn-primary">Apply</button>
                             </div>
                         </div>
                     </div>
@@ -468,10 +468,10 @@ export default function PageOne() {
 
     {/* <!-- main body footer --> */}
     <section>
-        <div class="body-footer">
-            <p class="trending-destination">Trending Searches: <span>Delhi <i
-                        class="fa-solid fa-arrow-right"></i> Dubai</span>
-                <span>Dubai <i class="fa-solid fa-arrow-right"></i> Delhi</span>
+        <div className="body-footer">
+            <p className="trending-destination">Trending Searches: <span>Delhi <i
+                        className="fa-solid fa-arrow-right"></i> Dubai</span>
+                <span>Dubai <i className="fa-solid fa-arrow-right"></i> Delhi</span>
             </p>
         </div>
     </section>
@@ -484,11 +484,11 @@ export default function PageOne() {
 </div>
 {/* <!-- main body footer section --> */}
 
-<section class="footer-all-main">
-    <div class="main-footer">
-        <div class="footer-box">
+<section className="footer-all-main">
+    <div className="main-footer">
+        <div className="footer-box">
             {/* <!--  --> */}
-            <div class="introducing-box">
+            <div className="introducing-box">
                 <span>INTRODUCING</span>
                 <h2>MMT Luxe<br/>Selections</h2>
                 <p>Escape to the epitome of luxury, packed with signature amenities and services</p>
@@ -497,9 +497,9 @@ export default function PageOne() {
 
         </div>
         {/* <!--  --> */}
-        <div class="footer-luxe-box">
+        <div className="footer-luxe-box">
 
-            <div class="luxe-box">
+            <div className="luxe-box">
                 <img src="/images/luxe-property.jpg" alt=""/>
                 <br/>
 
@@ -510,9 +510,9 @@ export default function PageOne() {
 
         </div>
         {/* <!--  --> */}
-        <div class="footer-luxe-box">
+        <div className="footer-luxe-box">
 
-            <div class="luxe-box">
+            <div className="luxe-box">
                 <img src="/images/villas-luxe.jpg" alt=""/>
                 <br/>
                 <b>Luxe Villas</b>
@@ -522,9 +522,9 @@ export default function PageOne() {
         </div>
 
         {/* <!--  --> */}
-        <div class="footer-luxe-box">
+        <div className="footer-luxe-box">
 
-            <div class="luxe-box">
+            <div className="luxe-box">
                 <img src="/images/internationl.jpg" alt=""/>
                 <br/>
                 <b>Luxe International</b>
