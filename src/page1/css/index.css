@@ -1,0 +1,264 @@
+body{
+    width: 100%;
+}
+/* header */
+header{
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    margin-bottom: 10px !important;
+    height: 100px;
+}
+/* header title */
+.header-name{
+    margin-top: 14px;
+    color: #396DAE;
+    margin-left: 5px;
+}
+.my{
+    color: white;
+    background-color: #E2222B;
+    padding: 5px;
+    border-radius: 8px;
+}
+/* navbar */
+
+
+.nav-icon{
+    margin-top: 10px;
+}
+.header-img{
+    height: 30px;
+    width: 45px;
+}
+.header-icon a{
+    text-decoration: none;
+    font-size: 16px;
+    color: #969C9A;
+    font-weight: 500;
+
+}
+.header-icon{
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+}
+.header-icon li{
+    margin-left: 7px;
+}
+.header-icon li :hover{
+    color: #1FA3E5;
+}
+/*nav icon center */
+.icon-center{
+    margin-left: 13px;
+}
+/*  */
+.login-section{
+    display: flex;
+    margin-top: 14px;
+}
+.log-my{
+    background-color: #8fe087;
+    color: #FFFFFF;
+    padding: 7px;
+    border-radius: 50%;
+    margin-top: 23px;
+}
+.btn-login{
+    margin-left: 7px;
+    font-size: 12px;
+    font-weight: 500;
+    background-color: #FFFFFF;
+    border-style: none;
+    text-decoration: none;
+    width: 40px;
+
+}
+.country{
+    font-size: 12px;
+    margin-left: 5px;
+}
+
+/* select country */
+.country{
+    width: 50px;
+    /* background-color: #1FA3E5; */
+    justify-content: center;
+    text-align: center;
+    margin-top: 25px;
+    height: 60px;
+}
+.coun-lan{
+    font-size: 12px;
+}
+.select-country{
+    color: #1FA3E5;
+    font-size: 12px;
+    border: none;
+    width: 55px;
+    /* margin-left: 10px; */
+}
+.select-country option{
+    width: 0px;
+    font-size: 12px;
+}
+
+/* main section */
+main{
+    background-image: url(/images/watterfall.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 550px;
+}
+.main-body{
+    background-color: #FFFFFF;
+    margin: 0px 30px;
+    height: 350px;
+    border-radius: 0 0 10px 10px;
+}
+.main-body-header{
+    display: flex;
+}
+/*  */
+
+.radio-form{
+    margin-left: 10px;
+}
+.upto-group{
+    font-size: 16px;
+    font-weight: 600;
+    color: #6c6e6e;
+}
+/*  */
+.new{
+    margin-left: 10px;
+    font-size: 14px;
+    color: white;
+    background-color: #E2222B;
+    border-radius: 40%;
+    padding: 3px 8px;
+}
+/*  */
+.book-property{
+    font-weight: 500;
+    font-size: 14px;
+    color: #888b8a;
+    margin: 5px 0 0 20px;
+}
+.book-property p a{
+    text-decoration: none;
+}
+/* main main section */
+.parent-flex{
+    display: flex;
+    justify-content:space-between;
+    box-shadow: 2px 2px 2px 2px #c5cccc;
+    margin:  10px;
+    border-radius: 7px;
+    /* height: 150px; */
+}
+.flexbox{
+    padding: 12px;
+    border: 1px solid #888b8a;
+    
+}
+/* location-field */
+.location-field{
+    margin-top: 10px;
+    border: none;
+    font-size: 34px;
+    padding: 10px;
+}
+
+.modal-rooms{
+    display: flex;
+    justify-content: space-between;
+    margin: 10px;
+}
+.btn-check-in{
+    font-size: 14px !important;
+    font-weight: 500 !important;
+    padding-left: 3px !important;
+}
+.date-check-in{
+    margin-top: 10px;
+}
+.date-check-in span{
+    font-weight: 700;
+    font-size: 25px;
+}
+/* font-awesome */
+.fa-angle-down{
+    color: #1FA3E5;
+}
+.trending-destination span{
+ background-color: #F2F2F2;
+ padding: 5px;
+ border-radius: 5px;
+}
+.trending-destination i{
+    color: #1FA3E5;
+}
+
+/* main footer */
+
+.main-footer{
+    margin: 30px 30px;
+    /* background-color: #E2222B; */
+    background-color: #FFFBF3;
+    height: 300px;
+    border-radius: 9px;
+    display: flex;
+}
+.footer-box{
+    width: 40%;
+    margin: 25px 0px 0px 20px;
+}
+.introducing-box h2{
+    color: #D9B763;
+    font-weight: 700;
+    font-size: 44px;
+
+}
+.introducing-box span{
+    font-weight: 500px;
+    font-size: 20px;
+}
+.introducing-box p{
+    color: #1f201f;
+    margin-top: 20px;
+    font-weight: 500;
+    font-size: 16px;
+}
+.introducing-box button{
+    border: none;
+    background-color: #D9B763;
+    color: #FFFBF3;
+    padding: 7px 20px;
+    font-weight: 600;
+    border-radius: 20px;
+}
+/*  */
+.luxe-box{
+    width: 100%;
+    
+    
+}
+.luxe-box img{
+    width: 180px;
+    border-radius: 10px 10px 0px 00px;
+}
+.footer-luxe-box{
+    width: 20%;
+    margin: 15px;
+}
+.luxe-box b{
+    font-size: 20px;
+}
+.luxe-box p{
+    margin-top: 20px;
+    font-size: 16px;
+    font-weight: 500;
+    color: #888b8a;
+}

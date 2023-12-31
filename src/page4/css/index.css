@@ -1,0 +1,473 @@
+body{
+    width: 100%;
+}
+/* start header */
+header h3 {
+    background-color: #23364C;
+    color: white;
+    padding: 10px;
+}
+
+/* end header */
+/* start main */
+
+.left-body-main{
+    width: 70%;
+    margin-right: 20px;
+}
+.right-body-main{
+    width: 30%;
+}
+.night-stay-detail-parent {
+    display: flex;
+    /* width: 1300px; */
+}
+
+.main-body-detail {
+    display: flex;
+}
+
+.review-section-parent {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.review-card-section {
+    padding: 9px;
+}
+
+.review-card-section p {
+    color: #636364;
+    font-size: 16px;
+}
+
+.review-section {
+    display: flex;
+}
+
+.review-rating ul {
+    padding-left: 0px !important;
+
+}
+
+.review-rating ul li {
+    list-style: none;
+    display: inline;
+}
+
+.fa-solid {
+    color: goldenrod;
+}
+
+.change-friendly {
+    border: none;
+    padding: 3px 8px;
+    margin-left: 5px;
+    font-size: 18px;
+    border-radius: 5px;
+}
+
+.ginger-goa img {
+    height: 130px;
+    width: 100px;
+    margin-left: 20px;
+}
+
+/* check-in-out */
+.check-in-out {
+    display: flex;
+    justify-content: space-between;
+    width: 50%;
+    padding: 9px;
+    background-color: #F0F0F0;
+    border: 1px solid #aaaaac;
+    margin-right: 5px;
+}
+
+.check-in {
+    font-size: 17px;
+    color: #636364;
+    justify-content: center;
+    align-items: center;
+}
+
+.check-in span {
+    font-size: 24px;
+    color: black;
+    font-weight: 500;
+}
+
+.check-out {
+    font-size: 15px;
+    color: #636364;
+    justify-content: center;
+    align-items: center;
+}
+
+.check-out span {
+    font-size: 22px;
+    color: black;
+    font-weight: 500;
+}
+
+/*  */
+.night-stay-detail-parent{
+    display: flex;
+    justify-content: space-between;
+}
+.night-stay-parent {
+    justify-content: center;
+    align-items: center;
+    margin: 50px 10px 0px 10px;
+}
+
+.night-stay {
+    border: 1px solid #636364;
+    border-radius: 10px;
+    padding: 3px 9px;
+    font-size: 12px;
+    color: #636364;
+}
+
+/*  */
+.night-stay-detail {
+    display: flex;
+    width: 50%;
+    padding: 0px 8px;
+    background-color: #F0F0F0;
+    border: 1px solid #aaaaac;
+    justify-content: center;
+    align-items: center;
+}
+
+.night-stay-detail h6 {
+    color: #636364;
+    font-size: 20px;
+}
+
+/*  */
+.luxe-twin-all{
+    display: flex;
+    justify-content: space-between;
+}
+.luxe-twin-room {
+    padding: 10px;
+}
+
+.luxe-twin-room p {
+    padding-left: 10px !important;
+    color: #6a6a6b;
+}
+
+.luxe-twin-room ul {
+    padding-left: 20px !important;
+}
+
+.luxe-twin-room ul li {
+    font-size: 16px;
+    color: #636364;
+}
+
+.luxe-twin-room ul li span {
+    color: red;
+}
+
+.luxe-twin-room ul li a {
+    text-decoration: none;
+}
+
+/* see inclusions */
+.inclusions-section{
+    margin: 10px;
+}
+.see-inclusons{
+    /* position: absolute;
+    top: 410px;
+    right: -270px; */
+    /* margin-top: 30px !important; */
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: 400;
+}
+
+/* upgrade stay */
+.upgrade-stay {
+    padding: 10px;
+}
+
+.upgrade-stay p input {
+    margin-left: 8px;
+}
+
+.upgrade-stay p {
+    font-size: 16px;
+    color: #353535;
+}
+
+/* important informations */
+.important-info {
+    background-color: #FFF9ED;
+    /* border-radius: 8px; */
+    border: 1px solid #aaaaac;
+}
+
+.luxe-twin-room h5 {
+    color: goldenrod;
+}
+
+/* Guest Details */
+.guest-details {
+    padding: 10px;
+}
+
+.title-fullname span {
+    color: #6a6a6b;
+    font-size: 15px;
+    margin: 8px;
+}
+
+.email-number-details {
+    margin-top: 14px;
+    display: flex;
+}
+
+.email-number-details div {
+    margin-right: 7px;
+}
+
+.email-number-details div p {
+    font-size: 13px;
+    color: #6a6a6b;
+    margin-bottom: 7px !important;
+}
+
+.email-number-details div p span {
+    font-size: 17px;
+}
+
+.email-number-details div input {
+    padding: 0px 10px;
+    width: 250px;
+}
+
+.mobile-number span {
+    color: #636364;
+    font-size: 17px;
+}
+
+.mobile-number select {
+    padding: 1px;
+    margin-top: 2px !important;
+}
+
+.gst-detail {
+    margin-top: 10px;
+}
+
+.gst-detail span {
+    color: #8b8b8b;
+    font-size: 15px;
+}
+
+.add-guest a {
+    text-decoration: none;
+    font-size: 18px;
+}
+
+/*  */
+.login-secret {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    background-color: #EBF5FF;
+}
+
+.login-secret div p {
+    color: #6a6a6b;
+    font-size: 17px;
+    margin: 10px 140px 10px 0px;
+}
+
+.login-secret div button {
+    font-size: 16px;
+    color: #4c7094;
+    background-color: #F0F0F0;
+    border: 1px solid #7595b6;
+    margin-top: 10px;
+}
+
+/*  */
+.special-request {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px;
+    margin-top: 8px;
+    border: 1px solid #cdcdd4;
+    align-items: center;
+}
+
+.special-request div p {
+    color: rgb(221, 52, 52);
+    font-weight: 400;
+    font-size: 14px;
+    margin-right: 70px;
+}
+
+.fa-angle-down {
+    color: #63adf7;
+}
+
+/*  */
+.terms-services {
+    padding: 7px;
+}
+
+.terms-services p {
+    color: #8b8b8b;
+    font-size: 15px;
+}
+
+.terms-services p a {
+    text-decoration: none;
+}
+
+/* pay now button */
+.pay-now {
+    background-color: #63adf7;
+    border: none;
+    font-size: 18px;
+    font-weight: 500;
+    color: #FFFFFF;
+    padding: 3px 45px;
+    border-radius: 2px;
+}
+
+/* right side */
+.pricedetailbody{
+    margin-left: 10px;
+    width: 100%;
+
+}
+.price-details-breakup {
+    box-shadow: 1px 1px 1px 1px #aaaaac;
+}
+
+.price-breakup {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+}
+
+.price {
+    margin-left: 30px;
+    font-weight: 500;
+}
+
+.hotel-taxes {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+}
+
+.taxes {
+    font-weight: 500;
+}
+
+.donate-card{
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+}
+.donate-card p {
+    font-size: 15px;
+    font-weight: 500;
+}
+
+.donate-card div p a {
+    text-decoration: none;
+}
+
+.donate-five {
+    font-weight: 500;
+}
+
+.total-card {
+    display: flex;
+    justify-content: space-between;
+    background-color: #f2f2fc;
+    padding: 20px 10px;
+}
+
+.total-card div b {
+    font-size: 17px;
+    font-weight: 500;
+}
+
+.bill {
+    font-weight: 500;
+}
+
+/*  */
+.fa-arrow-right {
+    color: #FFFFFF !important;
+}
+
+.coupon-codes {
+    border: 1px solid #8b8b8b;
+    padding: 10px;
+    margin-top: 10px;
+}
+
+.btn-coupon {
+    padding: 2px 5px;
+    background-color: #63adf7;
+    border: 1px solid #63adf7;
+}
+
+.coupon-codes p {
+    font-size: 14px;
+    margin-top: 14px;
+    color: #686666;
+
+}
+
+.mmt-gift-cards {
+    background-color: #FFEFD4;
+    padding: 1px 2px;
+    margin-bottom: 10px;
+}
+
+.mmt-gift-cards p {
+    font-size: 13px;
+}
+
+/*  */
+.why-signup {
+    margin-top: 10px;
+    padding: 10px;
+    box-shadow: 1px 1px 1px 1px #8b8b8b;
+}
+
+.why-signup b a {
+    text-decoration: none;
+    color: #63adf7;
+}
+
+.why-signup ul {
+    padding-left: 0 !important;
+
+}
+
+.why-signup ul li {
+    list-style: none;
+    font-size: 16px;
+}
+
+.li-bold {
+    font-weight: 500;
+}
+
+.fa-check {
+    color: rgb(18, 168, 18);
+}
