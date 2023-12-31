@@ -106,7 +106,7 @@ header{
 
 /* main section */
 main{
-    background-image: url(/images/watterfall.jpg);
+    background-image: url(../images/watterfall.jpg);
     background-repeat: no-repeat;
     background-size: cover;
     height: 550px;

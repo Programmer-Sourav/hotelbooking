@@ -1,4 +1,6 @@
 import React from 'react';
+import "./css/index.css";
+import "./css/bootstrap.min.css"
 
 
 export default function PageOne() {
@@ -9,7 +11,7 @@ export default function PageOne() {
                 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
                 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
                 <title>make more trip</title>
-                <link rel="stylesheet" href="./css/index.css" />
+                {/* <link rel="stylesheet" href="./css/index.css" /> */}
                 <link
                     rel="stylesheet"
                     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
@@ -17,7 +19,7 @@ export default function PageOne() {
                     crossorigin="anonymous"
                     referrerpolicy="no-referrer"
                 />
-                <link rel="stylesheet" href="css/bootstrap.min.css" />
+                {/* <link rel="stylesheet" href="css/bootstrap.min.css" /> */}
             </head>
 
             <body>
