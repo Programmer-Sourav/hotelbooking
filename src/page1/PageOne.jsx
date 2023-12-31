@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 
 import "./css/index.css";
 import "./css/bootstrap.min.css"
@@ -16,12 +16,38 @@ import ForexIcon from "./images/icon/forex.png"
 import TravelIcon from "./images/icon/travel.png"
 import { AppContext } from '../contexts/AppContext';
 import PlacesAutoComplete from '../Places/PlacesAutoComplete';
+import { format } from 'date-fns';
 
-
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 
 export default function PageOne() {
-    const {onChangeInput, placePredictions
+    const {onChangeInput, placePredictions, inputSearch
         } = useContext(AppContext)
+
+        const [selectedDate, setSelectedDate] = useState(new Date())
+
+        const twoDaysLater = new Date(selectedDate)
+        twoDaysLater.setDate(twoDaysLater.getDate() + 2)
+
+        useEffect(() => {
+            twoDaysLater.setDate(twoDaysLater.getDate() + 2);
+            setFinalDate(twoDaysLater);
+        
+          }, [selectedDate]);
+        
+        const [finalDate, setFinalDate] = useState(twoDaysLater)
+
+
+        const CustomDatePickerInput = ({ value, onClick }) => (
+            <div className="custom-date-picker-input" onClick={onClick}>
+              <p className="date-check-in">
+                <span>{format(value, 'd')}</span> {format(value, 'MMM, yyyy')}
+              </p>
+              <span>{format(value, 'EEEE')}</span>
+            </div>
+          );
+
     return (
         <div>
             <head>
@@ -177,7 +203,7 @@ export default function PageOne() {
                 <b>City Property Name or
                     Location</b>
                     <br/>
-                    <input className="location-field" type="text" placeholder="GOA" onChange={onChangeInput}/><br/>
+                    <input className="location-field" type="text" placeholder="GOA" value={inputSearch} onChange={onChangeInput}/><br/>
                     <PlacesAutoComplete placePredictions = {placePredictions}/>
                     <span>India</span>
             </div>
@@ -189,11 +215,17 @@ export default function PageOne() {
 
                     {/* <!-- modal -->
                     <!-- Button trigger modal --> */}
-                    <button type="button" className="btn btn-check-in" data-bs-toggle="modal"
+                    <button type="button" className="btn btn-check-in" 
                         data-bs-target="#staticBackdrop">
                         Check-In <i className="fa-solid fa-angle-down"></i> <br/>
-                        <p className="date-check-in"><span>26</span> Dec,2023</p>
-                        <span>Monday</span>
+                        {/* <p className="date-check-in"><span>26</span> Dec,2023</p>
+                        <span>Monday</span> */}
+                         <DatePicker
+                selected= {selectedDate}
+                dateFormat= "d MMM yyyy"
+                onChange={(date) => setSelectedDate(date)}
+                customInput={<CustomDatePickerInput />}
+              />
                     </button>
 
                     {/* <!-- Modal --> */}
