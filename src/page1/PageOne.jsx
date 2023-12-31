@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 
 import "./css/index.css";
 import "./css/bootstrap.min.css"
@@ -14,10 +14,14 @@ import BusIcon from "./images/icon/bus.png"
 import CabIcon from "./images/icon/cab.png"
 import ForexIcon from "./images/icon/forex.png"
 import TravelIcon from "./images/icon/travel.png"
+import { AppContext } from '../contexts/AppContext';
+import PlacesAutoComplete from '../Places/PlacesAutoComplete';
 
 
 
 export default function PageOne() {
+    const {onChangeInput, placePredictions
+        } = useContext(AppContext)
     return (
         <div>
             <head>
@@ -173,7 +177,8 @@ export default function PageOne() {
                 <b>City Property Name or
                     Location</b>
                     <br/>
-                    <input className="location-field" type="text" placeholder="GOA"/><br/>
+                    <input className="location-field" type="text" placeholder="GOA" onChange={onChangeInput}/><br/>
+                    <PlacesAutoComplete placePredictions = {placePredictions}/>
                     <span>India</span>
             </div>
             {/* <!--  --> */}
