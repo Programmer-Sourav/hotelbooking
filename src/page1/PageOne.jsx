@@ -1,6 +1,10 @@
 import React from 'react';
+
 import "./css/index.css";
 import "./css/bootstrap.min.css"
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/js/bootstrap.bundle.min.js';
+
 import  FirstIcon from "./images/icon/3125713.png"
 import  HotelIcon from "./images/icon/hotel.png"
 import VillaIcon from "./images/icon/villa.png"
@@ -10,6 +14,7 @@ import BusIcon from "./images/icon/bus.png"
 import CabIcon from "./images/icon/cab.png"
 import ForexIcon from "./images/icon/forex.png"
 import TravelIcon from "./images/icon/travel.png"
+
 
 
 export default function PageOne() {
