@@ -99,19 +99,19 @@ export default function PageOne() {
                     <nav>
                         <div className="nav-icon">
                             <ul className="header-icon">
-                            <li>
+                            {/* <li>
                         <a href="#">
                             <img className="header-img" src= {FirstIcon} alt=""/><br/>
                             Flights
                         </a>
-                    </li>
+                    </li> */}
                     <li>
                         <a href="#">
                             <img className="header-img" src={HotelIcon} alt=""/><br/>
                             Hotels
                         </a>
                     </li>
-                    <li>
+                    {/* <li>
                         <a href="#">
                             <span className="icon-center">
                                 <img className="header-img" src={VillaIcon} alt=""/> </span><br/>
@@ -154,7 +154,7 @@ export default function PageOne() {
                             <img className="header-img" src={TravelIcon} alt=""/><br/>
                             Travel <br/> Insurance
                         </a>
-                    </li>
+                    </li> */}
                             </ul>
                         </div>
                     </nav>
