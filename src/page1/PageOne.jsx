@@ -22,21 +22,35 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
 export default function PageOne() {
-    const {onChangeInput, placePredictions, inputSearch
+    const {onChangeInput, placePredictions, inputSearch, roomCount, setRoomCount, childAgeCount, setChildAgeCount, adultCount, setAdultCount, setAdultCountChange, onRoomCountChange, onChildAgeCountChange,
+        roomCountHolder, setRoomCountHolder, onRoomCountHolderChange
         } = useContext(AppContext)
 
         const [selectedDate, setSelectedDate] = useState(new Date())
 
         const twoDaysLater = new Date(selectedDate)
         twoDaysLater.setDate(twoDaysLater.getDate() + 2)
+        console.log(444, twoDaysLater)
 
         useEffect(() => {
-            twoDaysLater.setDate(twoDaysLater.getDate() + 2);
+            twoDaysLater.setDate(twoDaysLater.getDate());
             setFinalDate(twoDaysLater);
-        
+            console.log(333, twoDaysLater)
           }, [selectedDate]);
         
         const [finalDate, setFinalDate] = useState(twoDaysLater)
+
+
+    const ageOptions = []
+      const getAgeArray = () =>{
+        
+        for(let i =0; i< 18; i++){
+            ageOptions.push(i)
+        }
+        return ageOptions;
+      }
+     getAgeArray();
+     console.log(ageOptions)
 
 
         const CustomDatePickerInput = ({ value, onClick }) => (
@@ -47,6 +61,15 @@ export default function PageOne() {
               <span>{format(value, 'EEEE')}</span>
             </div>
           );
+
+          const CustomFinalDatePickerInput = ({ value, onClick }) => (
+            <div className="custom-date-picker-input" onClick={onClick}>
+              <p className="date-check-in">
+                <span>{format(value, 'd')}</span> {format(value, 'MMM, yyyy')}
+              </p>
+              <span>{format(value, 'EEEE')}</span>
+            </div>
+          );   
 
     return (
         <div>
@@ -175,9 +198,9 @@ export default function PageOne() {
     <div className="main-body-header">
         <div className="radio-form">
             <form action="">
-                <input type="radio" id="" name="" value=""/>
+                <input type="radio"  value=""/>
                 <label className="upto-group" for="">Upto 4 Rooms</label>
-                <input type="radio" id="" name="" value=""/>
+                <input type="radio"  value=""/>
                 <label className="upto-group" for="">Group Deals</label>
             </form>
         </div>
@@ -262,11 +285,17 @@ export default function PageOne() {
 
                     {/* <!-- modal -->
                     <!-- Button trigger modal --> */}
-                    <button type="button" className="btn btn-check-in" data-bs-toggle="modal"
+                    {/* <button type="button" className="btn btn-check-in" data-bs-toggle="modal"
                         data-bs-target="#staticBackdrop">
-                        Check-Out <i className="fa-solid fa-angle-down"></i> <br/>
-                        <p className="date-check-in"><span>28</span> Dec,2023</p>
-                        <span>Wednesday</span>
+                        Check-Out <i className="fa-solid fa-angle-down"></i> <br/> */}
+                        <button type="button" className="btn btn-check-in" 
+                        data-bs-target="#staticBackdrop">
+                        Check-Out <i className="fa-solid fa-angle-down"></i> <br/> 
+                <DatePicker
+                selected= {finalDate}
+                dateFormat= "d MMM yyyy"
+                onChange={(date) => setFinalDate(date)}
+                customInput={<CustomFinalDatePickerInput />}/>
                     </button>
 
                     {/* <!-- Modal --> */}
@@ -329,7 +358,7 @@ export default function PageOne() {
                                     <div>
 
 
-                                        <select name="" id="">
+                                        <select value={roomCount} name="rooms" id="rooms_id" onChange={onRoomCountChange}>
                                             <option value="1">1</option>
                                             <option value="2">2</option>
                                             <option value="3">3</option>
@@ -348,7 +377,7 @@ export default function PageOne() {
                                     <div>
 
 
-                                        <select name="" id="">
+                                        <select value={adultCount} name="adultcount" id="adult-count" onChange={setAdultCountChange}>
                                             <option value="1">1</option>
                                             <option value="2">2</option>
                                             <option value="3">3</option>
@@ -369,24 +398,15 @@ export default function PageOne() {
                                     <div>
 
 
-                                        <select name="" id="">
-                                            <option value="1">1</option>
-                                            <option value="2">2</option>
-                                            <option value="3">3</option>
-                                            <option value="4">4</option>
-                                            <option value="5">5</option>
-                                            <option value="6">6</option>
-                                            <option value="7">7</option>
-                                            <option value="8">8</option>
-                                            <option value="9">9</option>
-                                            <option value="10">10</option>
-                                            <option value="11">11</option>
-                                            <option value="12">12</option>
-                                            <option value="13">13</option>
-                                            <option value="14">14</option>
-                                            <option value="15">15</option>
-                                            <option value="16">16</option>
-                                            <option value="17">17</option>
+                                        <select value={childAgeCount} name="childage" id="child-age" onChange={onChildAgeCountChange}>
+                                            
+                                            
+                                                {ageOptions.map((age)=>(
+                                                    <option value={age}>{age}</option>
+                                                ))}
+                                                
+                                        
+                                
                                         </select>
                                     </div>
 
@@ -410,13 +430,13 @@ export default function PageOne() {
                 <!--  -->
                 <!-- Button trigger modal --> */}
                 <button type="button" className="btn btn-check-in" data-bs-toggle="modal"
-                    data-bs-target="#exampleModal">
+                    data-bs-target="#priceFilterModal">
                     <p>Price Per Night <i className="fa-solid fa-angle-down"></i></p><br/>
                     <p className=""><span>₹0-₹1500</span>,₹1500-₹2500...</p>
                 </button>
 
                 {/* <!-- Modal --> */}
-                <div className="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                <div className="modal fade" id="priceFilterModal" tabindex="-1" aria-labelledby="exampleModalLabel"
                     aria-hidden="true">
                     <div className="modal-dialog">
                         <div className="modal-content">

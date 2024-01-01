@@ -13,6 +13,10 @@ export default function AppProvider({children}){
     const [prediction, setPrediction] = useState("")
     const [results, setResults] = useState("");
     const [guestNumber, setGuestNumber] = useState(2)
+    const [roomCount, setRoomCount] = useState(1)
+    const [adultCount, setAdultCount] = useState(2)
+    const [childAgeCount, setChildAgeCount] = useState(1)
+    const [roomCountHolder, setRoomCountHolder] = useState("4")
   
 
     const [state, dispatch] = useReducer(HotelReducer, initialState)
@@ -33,7 +37,11 @@ export default function AppProvider({children}){
    const closePopup = () =>{
   
    }
+   
 
+   const onRoomCountHolderChange = (e) =>{
+      setRoomCountHolder(e.target.value)
+   }
     const onChangeInput = async (e) =>{
         setInputSearch(e.target.value)
         if (e.target.value.trim() !== '' ) {
@@ -101,11 +109,24 @@ export default function AppProvider({children}){
     });
   }
 
+
+  const setAdultCountChange = (e) =>{
+    setAdultCount(e.target.value)
+  }
+
+  const onRoomCountChange = (e) =>{
+   setRoomCount(e.target.value)
+  }
+
+  const onChildAgeCountChange = (e) =>{
+   setChildAgeCount(e.target.value)
+  }
   
     return(
       <AppContext.Provider value={{inputSearch, onChangeInput, placePredictions, setPlacePredictions, prediction, 
         setPrediction, results, setResults, goToInputText, onSearchClick, openPopup, closePopup,
           onGuestChange, guestNumber, navigate, searchOnButtonClick, 
-         dispatch, hotels: state.hotels}}>{children}</AppContext.Provider>
+         dispatch, hotels: state.hotels, roomCount, setRoomCount, childAgeCount, setChildAgeCount, 
+         adultCount, setAdultCount, setAdultCountChange, onRoomCountChange, onChildAgeCountChange, roomCountHolder, setRoomCountHolder, onRoomCountHolderChange}}>{children}</AppContext.Provider>
     )
 }
