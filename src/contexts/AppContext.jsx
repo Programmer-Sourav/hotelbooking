@@ -1,6 +1,7 @@
-import { createContext, useReducer, useState } from "react";
+import { createContext, useEffect, useReducer, useState } from "react";
 import { useNavigate } from "react-router";
 import HotelReducer, { initialState } from "../reducers/HotelReducer";
+import { convertDateFormat } from "../Utility/utility";
 
 
 export const AppContext = createContext()
@@ -15,8 +16,28 @@ export default function AppProvider({children}){
     const [guestNumber, setGuestNumber] = useState(2)
     const [roomCount, setRoomCount] = useState(1)
     const [adultCount, setAdultCount] = useState(2)
-    const [childAgeCount, setChildAgeCount] = useState(1)
+    const [childAgeCount, setChildAgeCount] = useState(0)
     const [roomCountHolder, setRoomCountHolder] = useState("4")
+    const [perNightCharge, setPerNightCharge] = useState(0)
+    const [vipCharge, setVipCharge] = useState(0)
+    const [packageCharge, setPackageCharge] = useState(0)
+
+
+
+    const [selectedDate, setSelectedDate] = useState(new Date())
+
+    const twoDaysLater = new Date(selectedDate)
+    twoDaysLater.setDate(twoDaysLater.getDate() + 2)
+    //console.log(444, twoDaysLater)
+
+    useEffect(() => {
+        twoDaysLater.setDate(twoDaysLater.getDate());
+        setFinalDate(twoDaysLater);
+       // console.log(333, twoDaysLater)
+      }, [selectedDate]);
+    
+    const [finalDate, setFinalDate] = useState(twoDaysLater)
+ 
   
 
     const [state, dispatch] = useReducer(HotelReducer, initialState)
@@ -54,7 +75,6 @@ export default function AppProvider({children}){
     const goToInputText = (placePrediction) =>{
         setPrediction(placePrediction)
         setInputSearch(placePrediction.description)
-        console.log(5555, placePrediction.description)
         setPlacePredictions([])
     }
 
@@ -70,7 +90,9 @@ export default function AppProvider({children}){
     }
 
     const searchOnButtonClick = () =>{
-      navigate("/search")
+      const convertedStartDate = convertDateFormat(selectedDate)
+      const convertedFinalDate = convertDateFormat(finalDate)
+      navigate(`/hotel-search/city/${city}/start_date/${convertedStartDate}/end-date/${convertedFinalDate}/rooms/${roomCount}/adult/${adultCount}/child/${childAgeCount}/night/${perNightCharge}/vip/${vipCharge}/package/${packageCharge}`)
     }
 
     async function getPlacesFromGoogleAPI(){
@@ -121,12 +143,39 @@ export default function AppProvider({children}){
   const onChildAgeCountChange = (e) =>{
    setChildAgeCount(e.target.value)
   }
+
+
+  const onSetPerNightCharge = (e) =>{
+       setPerNightCharge(e.target.value)
+  }
+
+  const onVipCharge = (e) =>{
+        setVipCharge(e.target.value)
+  }
+
+  const onPackageCharge = (e) =>{
+      setPackageCharge(e.target.value)
+  }
+
+  let city = "Agartala"
+  if( prediction.description && prediction.description.includes("Delhi")){
+           city = "Delhi"
+  }
+  else if(prediction.description && prediction.description.includes("Calcutta")){
+    city= "Calcutta"
+  }
+  else if(prediction.description && prediction.description.includes("Bangalore")){
+    city= "Bangalore"
+  }
   
     return(
       <AppContext.Provider value={{inputSearch, onChangeInput, placePredictions, setPlacePredictions, prediction, 
         setPrediction, results, setResults, goToInputText, onSearchClick, openPopup, closePopup,
           onGuestChange, guestNumber, navigate, searchOnButtonClick, 
          dispatch, hotels: state.hotels, roomCount, setRoomCount, childAgeCount, setChildAgeCount, 
-         adultCount, setAdultCount, setAdultCountChange, onRoomCountChange, onChildAgeCountChange, roomCountHolder, setRoomCountHolder, onRoomCountHolderChange}}>{children}</AppContext.Provider>
+         adultCount, setAdultCount, setAdultCountChange, onRoomCountChange, onChildAgeCountChange, roomCountHolder,
+          setRoomCountHolder, onRoomCountHolderChange, selectedDate, setSelectedDate, finalDate, setFinalDate,
+          onSetPerNightCharge, onVipCharge, onPackageCharge, perNightCharge, vipCharge, packageCharge
+       }}>{children}</AppContext.Provider>
     )
 }

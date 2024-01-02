@@ -66,7 +66,7 @@ header{
     margin-top: 23px;
 }
 .btn-login{
-    margin-left: 7px;
+    margin-left: 8px;
     font-size: 12px;
     font-weight: 500;
     background-color: #FFFFFF;
@@ -74,6 +74,21 @@ header{
     text-decoration: none;
     width: 40px;
 
+}
+.searchbtn{
+    font-size: 24px;
+    background-color: #FFFFFF;
+    border-style: none;
+    text-decoration: none;
+    padding: 8px;
+    border-radius: 8px;
+    background: #1FA3E5;
+    color: white;
+    width: 128px;
+    font: bold;
+}
+.roomcountdiv{
+    font-size: 16px;
 }
 .country{
     font-size: 12px;
