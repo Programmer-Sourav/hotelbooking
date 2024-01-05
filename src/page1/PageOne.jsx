@@ -26,11 +26,8 @@ export default function PageOne() {
         adultCount, setAdultCount, setAdultCountChange, onRoomCountChange, onChildAgeCountChange,
         roomCountHolder, setRoomCountHolder, onRoomCountHolderChange, searchOnButtonClick, selectedDate, 
         setSelectedDate, finalDate, setFinalDate, onSetPerNightCharge, onVipCharge, onPackageCharge, perNightCharge,
-         vipCharge, packageCharge
+         vipCharge, packageCharge, updateDeal
         } = useContext(AppContext)
-
-       
-
 
     const ageOptions = []
       const getAgeArray = () =>{
@@ -41,8 +38,17 @@ export default function PageOne() {
         return ageOptions;
       }
      getAgeArray();
-    
 
+     const adultsNumber = []
+
+     const getAdultArray = () =>{
+        for(let i=0; i<40; i++){
+            adultsNumber.push(i)
+        }
+        return adultsNumber;
+     }
+    
+    getAdultArray()
 
     const CustomDatePickerInput = ({ value, onClick }) => (
         <div className="custom-date-picker-input" onClick={onClick}>
@@ -160,21 +166,21 @@ export default function PageOne() {
                             <span className="coun-lan">Country</span><br />
                             <select className="select-country">
                             <option value="IN">India</option>
-                    <option value="JP"><span>Japan</span></option>
-                    <option value="SP">Spain</option>
-                    <option value="UAE">UAE</option>
-                    <option value="QATAR">Qatar</option>
-                            </select>
+                            <option value="JP"><span>Japan</span></option>
+                            <option value="SP">Spain</option>
+                            <option value="UAE">UAE</option>
+                            <option value="QATAR">Qatar</option>
+                        </select>
                         </div>
                         <div className="country">
                             <span className="coun-lan">Language</span>
-                            <select className="select-country" name="" id="">
+                        <select className="select-country" name="" id="">
                             <option value="IN">India</option>
-                    <option value="JP"><span>Japan</span></option>
-                    <option value="SP">Spain</option>
-                    <option value="UAE">UAE</option>
-                    <option value="QATAR">Qatar</option>
-                            </select>
+                            <option value="JP"><span>Japan</span></option>
+                            <option value="SP">Spain</option>
+                            <option value="UAE">UAE</option>
+                            <option value="QATAR">Qatar</option>
+                        </select>
                         </div>
                     </div>
                 </header>
@@ -189,9 +195,9 @@ export default function PageOne() {
     <div className="main-body-header">
         <div className="radio-form">
             <form action="">
-                <input type="radio"  value=""/>
+                <input type="radio"  value="noDeal" checked={roomCountHolder==="noDeal"} onChange={(e)=>{onRoomCountHolderChange(e.target.value)}}/>
                 <label className="upto-group" for="">Upto 4 Rooms</label>
-                <input type="radio"  value=""/>
+                <input type="radio"  value="Deal" checked={roomCountHolder==="Deal"} onChange={(e)=>{onRoomCountHolderChange(e.target.value)}}/>
                 <label className="upto-group" for="">Group Deals</label>
             </form>
         </div>
@@ -369,11 +375,10 @@ export default function PageOne() {
 
 
                                         <select value={adultCount} name="adultcount" id="adult-count" onChange={setAdultCountChange}>
-                                            <option value="1">1</option>
-                                            <option value="2">2</option>
-                                            <option value="3">3</option>
-                                            <option value="4">4</option>
-                                            <option value="5">5</option>
+                                            
+                                            {adultsNumber.map((adult, index)=>(
+                                                <option value={adult}>{adult}</option>
+                                            ))}
                                         </select>
                                     </div>
 
@@ -407,7 +412,7 @@ export default function PageOne() {
                             <div className="modal-footer">
                                 {/* <button type="button" className="btn btn-secondary"
                                     data-bs-dismiss="modal">Close</button> */}
-                                <button type="button" data-bs-dismiss="modal" className="btn btn-primary">Apply</button>
+                                <button type="button" onClick={updateDeal} data-bs-dismiss="modal" className="btn btn-primary">Apply</button>
                             </div>
                         </div>
                     </div>

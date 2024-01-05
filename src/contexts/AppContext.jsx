@@ -1,7 +1,8 @@
 import { createContext, useEffect, useReducer, useState } from "react";
 import { useNavigate } from "react-router";
-import HotelReducer, { initialState } from "../reducers/HotelReducer";
+import HotelReducer, { BOOKING_ACTIONS, initialState } from "../reducers/HotelReducer";
 import { convertDateFormat } from "../Utility/utility";
+import { findHotelsByCity } from "../api/remote";
 
 
 export const AppContext = createContext()
@@ -15,9 +16,9 @@ export default function AppProvider({children}){
     const [results, setResults] = useState("");
     const [guestNumber, setGuestNumber] = useState(2)
     const [roomCount, setRoomCount] = useState(1)
-    const [adultCount, setAdultCount] = useState(2)
+    const [adultCount, setAdultCount] = useState(1)
     const [childAgeCount, setChildAgeCount] = useState(0)
-    const [roomCountHolder, setRoomCountHolder] = useState("4")
+    const [roomCountHolder, setRoomCountHolder] = useState("noDeal")
     const [perNightCharge, setPerNightCharge] = useState(0)
     const [vipCharge, setVipCharge] = useState(0)
     const [packageCharge, setPackageCharge] = useState(0)
@@ -37,6 +38,15 @@ export default function AppProvider({children}){
       }, [selectedDate]);
     
     const [finalDate, setFinalDate] = useState(twoDaysLater)
+
+
+    const priceRangeArrayForCheckbox = [{id: 1, min: 0, max: 3000}, 
+                                        {id: 2, min: 3000, max: 5500},
+                                        {id: 3, min: 5500, max: 7500},
+                                        {id: 4, min: 7500, max: 9500},
+                                        {id: 5, min: 9500, max: 15000},
+                                        {id: 6, min: 15000, max: 30000},
+                                        {id: 7, min: 30000, max: 300000}]
  
   
 
@@ -54,15 +64,22 @@ export default function AppProvider({children}){
       }
    }
  
+
+   function updateAdults(roomCount){
+      setAdultCount(roomCount)
+   }
+
+   useEffect(()=>{updateAdults(roomCount)}, [roomCount])
  
    const closePopup = () =>{
   
    }
    
 
-   const onRoomCountHolderChange = (e) =>{
-      setRoomCountHolder(e.target.value)
+   const onRoomCountHolderChange = (selectedValue) =>{
+      setRoomCountHolder(selectedValue)
    }
+
     const onChangeInput = async (e) =>{
         setInputSearch(e.target.value)
         if (e.target.value.trim() !== '' ) {
@@ -84,7 +101,6 @@ export default function AppProvider({children}){
     }
 
     const onSearchClick = async (place) =>{
-
       const address = place.description
        getGeocodes(address)
     }
@@ -92,13 +108,16 @@ export default function AppProvider({children}){
     const searchOnButtonClick = () =>{
       const convertedStartDate = convertDateFormat(selectedDate)
       const convertedFinalDate = convertDateFormat(finalDate)
+      const HOTEL_SEARCH = `hotel-search/city/${city}/start_date/${convertedStartDate}/end-date/${convertedFinalDate}/rooms/${roomCount}/adult/${adultCount}/child/${childAgeCount}/night/${perNightCharge}/vip/${vipCharge}/package/${packageCharge}`
+      findHotelsByCity(dispatch, HOTEL_SEARCH)
       navigate(`/hotel-search/city/${city}/start_date/${convertedStartDate}/end-date/${convertedFinalDate}/rooms/${roomCount}/adult/${adultCount}/child/${childAgeCount}/night/${perNightCharge}/vip/${vipCharge}/package/${packageCharge}`)
     }
 
     async function getPlacesFromGoogleAPI(){
       const location = inputSearch
      try {
-         const response = await fetch(`https://backendapis.developersourav.repl.co/places/${location}`);
+     // https://backendapis.developersourav.repl.co/places/${location}
+         const response = await fetch(`https://55ab11dd-823c-4991-8131-76e6995fdd10-00-336qjktrk2nb1.pike.replit.dev/places/${location}`);
          const data = await response.json();
          
          
@@ -167,7 +186,76 @@ export default function AppProvider({children}){
   else if(prediction.description && prediction.description.includes("Bangalore")){
     city= "Bangalore"
   }
+
+  function updateDeal (){
+    if(roomCount<=4){
+      setRoomCountHolder("noDeal")
+    }
+    else{
+      setRoomCountHolder("Deal")
+    }
+  }
+
+  const onSuggestedStateChange = ( ) =>{
+
+  }
+
+
+  const onPriceStateChange = (itemId, value) =>{
+   console.log(444, itemId, value)
+   dispatch({type: BOOKING_ACTIONS.PRICE_CHECKBOX, payload: itemId})
+  }
   
+  const onStarStateChange = () =>{
+
+  }
+
+  const onRatingStateChange = () =>{
+
+  }
+
+  const onPropertyStateChange = () =>{
+
+  }
+  
+  const onLocalityStateChange = () =>{
+
+  }
+
+  const onAreaStateChange = () =>{
+
+  }
+
+
+  const onAmenityStateChange = () =>{
+
+  }
+
+  const onMMTStateChange = () =>{
+
+  }
+
+  const onBookingPrefStateChange = () =>{
+
+  }
+
+  const onHouseRuleStateChange = () =>{
+
+  }
+
+  const onBudgetRangeChange = (min, max) =>{
+    dispatch({type: BOOKING_ACTIONS.SEARCH_BY_BUDGET,  payload: {min, max}})
+  }
+
+  const onBudgetMinChange = (min) =>{
+     dispatch({type: BOOKING_ACTIONS.SEARCH_BUDGET, payload: min})
+  }
+  const onBudgetMaxChange = (max) =>{
+    dispatch({type: BOOKING_ACTIONS.SEARCH_BUDGET, payload: max})
+  }
+  
+  const priceState = state.priceCheckBox
+
     return(
       <AppContext.Provider value={{inputSearch, onChangeInput, placePredictions, setPlacePredictions, prediction, 
         setPrediction, results, setResults, goToInputText, onSearchClick, openPopup, closePopup,
@@ -175,7 +263,13 @@ export default function AppProvider({children}){
          dispatch, hotels: state.hotels, roomCount, setRoomCount, childAgeCount, setChildAgeCount, 
          adultCount, setAdultCount, setAdultCountChange, onRoomCountChange, onChildAgeCountChange, roomCountHolder,
           setRoomCountHolder, onRoomCountHolderChange, selectedDate, setSelectedDate, finalDate, setFinalDate,
-          onSetPerNightCharge, onVipCharge, onPackageCharge, perNightCharge, vipCharge, packageCharge
+          onSetPerNightCharge, onVipCharge, onPackageCharge, perNightCharge, vipCharge, packageCharge, roomCountHolder, updateDeal,
+          suggestedState: state.suggestedCheckBox, priceState, starState: state.starCategoryCheckbox, ratingState: state.ratingCheckbox,
+          propertyState: state.propertyTypeCheckbox, localityState: state.localityCheckbox, areasState: state.topAreas, roomState: state.roomViews,
+          amnetesState: state.amenetiesCb, mmtLuxState : state.mmtLuxCb, bookingPrefState: state.bookingPrefCb, houseRulesState: state.houseRules, 
+          onSuggestedStateChange, onAmenityStateChange, onAreaStateChange, onBookingPrefStateChange, onPriceStateChange, onStarStateChange, 
+          onRatingStateChange, onPropertyStateChange, onLocalityStateChange, onMMTStateChange, onHouseRuleStateChange, priceRangeArrayForCheckbox,
+          onBudgetRangeChange, budgetState: state.searchBudget, onBudgetMinChange, onBudgetMaxChange
        }}>{children}</AppContext.Provider>
     )
 }

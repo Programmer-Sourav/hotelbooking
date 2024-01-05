@@ -7,3 +7,9 @@ export function convertDateFormat(dateInput){
 
    return formattedDate;
 }
+
+
+export function calculateTax(hotelPrice){
+    const totalTax = (hotelPrice * 28)/100;
+    return totalTax;
+}
