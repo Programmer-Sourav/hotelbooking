@@ -202,20 +202,20 @@ export default function AppProvider({children}){
 
 
   const onPriceStateChange = (itemId, value) =>{
-   console.log(444, itemId, value)
    dispatch({type: BOOKING_ACTIONS.PRICE_CHECKBOX, payload: itemId})
   }
   
-  const onStarStateChange = () =>{
-
+  const onStarStateChange = (value, targetchecked) =>{
+   //console.log(8888, targetchecked)
+   dispatch({type: BOOKING_ACTIONS.STAR_CATEGORY_CHECKBOX, payload: value})
   }
 
-  const onRatingStateChange = () =>{
-
+  const onRatingStateChange = (value) =>{
+    dispatch({type: BOOKING_ACTIONS.RATING_CHECKBOX, payload: value})
   }
 
-  const onPropertyStateChange = () =>{
-
+  const onPropertyStateChange = (value) =>{
+    dispatch({type: BOOKING_ACTIONS.PROPERTY_CHECKBOX, payload: value})
   }
   
   const onLocalityStateChange = () =>{
@@ -231,8 +231,8 @@ export default function AppProvider({children}){
 
   }
 
-  const onMMTStateChange = () =>{
-
+  const onMMTStateChange = (value) =>{
+     dispatch({type: BOOKING_ACTIONS.MMT_VALUE_STAY, payload: value})
   }
 
   const onBookingPrefStateChange = () =>{
@@ -244,18 +244,19 @@ export default function AppProvider({children}){
   }
 
   const onBudgetRangeChange = (min, max) =>{
-    dispatch({type: BOOKING_ACTIONS.SEARCH_BY_BUDGET,  payload: {min, max}})
+    console.log(222, min, max)
+    dispatch({type: BOOKING_ACTIONS.SEARCH_BY_BUDGET,  payload: true})
   }
 
   const onBudgetMinChange = (min) =>{
-     dispatch({type: BOOKING_ACTIONS.SEARCH_BUDGET, payload: min})
+     dispatch({type: BOOKING_ACTIONS.SEARCH_BUDGET, payload: {min: min, max: budgetState.max }})
   }
   const onBudgetMaxChange = (max) =>{
-    dispatch({type: BOOKING_ACTIONS.SEARCH_BUDGET, payload: max})
+    dispatch({type: BOOKING_ACTIONS.SEARCH_BUDGET, payload: {min: budgetState.min, max: max}})
   }
   
   const priceState = state.priceCheckBox
-
+  const budgetState = state.searchBudget
     return(
       <AppContext.Provider value={{inputSearch, onChangeInput, placePredictions, setPlacePredictions, prediction, 
         setPrediction, results, setResults, goToInputText, onSearchClick, openPopup, closePopup,
@@ -269,7 +270,7 @@ export default function AppProvider({children}){
           amnetesState: state.amenetiesCb, mmtLuxState : state.mmtLuxCb, bookingPrefState: state.bookingPrefCb, houseRulesState: state.houseRules, 
           onSuggestedStateChange, onAmenityStateChange, onAreaStateChange, onBookingPrefStateChange, onPriceStateChange, onStarStateChange, 
           onRatingStateChange, onPropertyStateChange, onLocalityStateChange, onMMTStateChange, onHouseRuleStateChange, priceRangeArrayForCheckbox,
-          onBudgetRangeChange, budgetState: state.searchBudget, onBudgetMinChange, onBudgetMaxChange
+          onBudgetRangeChange, budgetState: state.searchBudget, onBudgetMinChange, onBudgetMaxChange, searchByBudgetState: state.searchByBudget, mmtValueState: state.mmtValueStay
        }}>{children}</AppContext.Provider>
     )
 }

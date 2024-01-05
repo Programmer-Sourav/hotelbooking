@@ -4,7 +4,8 @@ import { AppContext } from "../contexts/AppContext"
 export default function LeftNavigation(){
 
     const { priceRangeArrayForCheckbox, onPriceStateChange, priceState, onBudgetRangeChange, budgetState, 
-      onBudgetMinChange, onBudgetMaxChange } = useContext(AppContext)
+      onBudgetMinChange, onBudgetMaxChange, searchByBudgetState, starState, ratingState, onStarStateChange, onRatingStateChange, propertyState,
+       onPropertyStateChange, mmtValueState, onMMTStateChange} = useContext(AppContext)
 
     return(
         <div>
@@ -28,7 +29,7 @@ export default function LeftNavigation(){
         <div className="checkbox-display">
             <div>
                 <p>
-                    <input type="checkbox"/> 5 Star
+                    <input type="checkbox" checked={starState.includes("fiveStar")} onChange={(e)=>{onStarStateChange("fiveStar")}} /> 5 Star
                 </p>
             </div>
             <div>
@@ -176,7 +177,7 @@ export default function LeftNavigation(){
               
             <div>
                 <p>
-                    <input type="checkbox" value={priceState.includes(priceRange.id)} onChange={(e)=>{onPriceStateChange(priceRange.id, e.target.checked)}}/> ₹ {priceRange.min} - ₹ {priceRange.max}
+                    <input type="checkbox" checked={priceState.includes(priceRange.id)} onChange={(e)=>{onPriceStateChange(priceRange.id)}}/> ₹ {priceRange.min} - ₹ {priceRange.max}
                 </p>
             </div>
             <div>
@@ -272,11 +273,11 @@ export default function LeftNavigation(){
         <div>
             <div className="min-max-budget">
                 <label for="">Your Budget</label>
-                <form action="">
+                  <div>
                     <input type="number" placeholder="Min" value= {budgetState.min} onChange={(e)=>{onBudgetMinChange(e.target.value)}}/> to
                     <input type="number" placeholder="Max" value={budgetState.max} onChange={(e)=>{onBudgetMaxChange(e.target.value)}}/> <button onClick={()=>onBudgetRangeChange(budgetState.min, budgetState.max)}><i
                             className="fa-solid fa-arrow-right"></i></button>
-                </form>
+                </div>
             </div>
         </div>
 
@@ -287,7 +288,7 @@ export default function LeftNavigation(){
             </div>
             <div>
                 <label className="switch">
-                    <input type="checkbox"/>
+                    <input type="checkbox"  checked={mmtValueState} onChange={(e)=>{onMMTStateChange(e.target.checked)}}/>
                     <span className="slider round"></span>
                 </label>
             </div>
@@ -300,7 +301,7 @@ export default function LeftNavigation(){
         <div className="checkbox-display">
             <div>
                 <p>
-                    <input type="checkbox"/> 3 Star
+                <input type="checkbox" checked={starState.includes("threeStar")} onChange={(e)=>{onStarStateChange("threeStar", e.target.checked)}} /> 3 Star
                 </p>
             </div>
             <div>
@@ -313,7 +314,7 @@ export default function LeftNavigation(){
         <div className="checkbox-display">
             <div>
                 <p>
-                    <input type="checkbox"/> 4 Star
+                <input type="checkbox" checked={starState.includes("fourStar")} onChange={(e)=>{onStarStateChange("fourStar")}} /> 4 Star
                 </p>
             </div>
             <div>
@@ -325,7 +326,7 @@ export default function LeftNavigation(){
         <div className="checkbox-display">
             <div>
                 <p>
-                    <input type="checkbox"/> 5 Star
+                <input type="checkbox" checked={starState.includes("fiveStar")} onChange={(e)=>{onStarStateChange("fiveStar")}} /> 5 Star
                 </p>
             </div>
             <div>
@@ -341,7 +342,7 @@ export default function LeftNavigation(){
         <div className="checkbox-display">
             <div>
                 <p>
-                    <input type="checkbox"/> Excellent: 4.2+
+                    <input type="checkbox" checked={ratingState.includes("4.2")} onChange={()=>{onRatingStateChange("4.2")}} /> Excellent: 4.2+
                 </p>
             </div>
             <div>
@@ -354,7 +355,7 @@ export default function LeftNavigation(){
         <div className="checkbox-display">
             <div>
                 <p>
-                    <input type="checkbox"/> Very Good: 3.5+
+                <input type="checkbox" checked={ratingState.includes("3.5")} onChange={()=>{onRatingStateChange("3.5")}} /> Very Good: 3.5+
                 </p>
             </div>
             <div>
@@ -367,7 +368,7 @@ export default function LeftNavigation(){
         <div className="checkbox-display">
             <div>
                 <p>
-                    <input type="checkbox"/> Good: 3+
+                <input type="checkbox" checked={ratingState.includes("3")} onChange={()=>{onRatingStateChange("3")}} /> Good: 3+
                 </p>
             </div>
             <div>
@@ -383,7 +384,7 @@ export default function LeftNavigation(){
         <div className="checkbox-display">
             <div>
                 <p>
-                    <input type="checkbox"/> Hotel
+                    <input type="checkbox" checked={propertyState.includes("hotel")} onChange={()=>{onPropertyStateChange("hotel")}}/> Hotel
                 </p>
             </div>
             <div>
@@ -396,7 +397,7 @@ export default function LeftNavigation(){
         <div className="checkbox-display">
             <div>
                 <p>
-                    <input type="checkbox"/> Resorts
+                <input type="checkbox" checked={propertyState.includes("resort")} onChange={()=>{onPropertyStateChange("resort")}}/> Resorts
                 </p>
             </div>
             <div>
@@ -408,7 +409,7 @@ export default function LeftNavigation(){
         <div className="checkbox-display">
             <div>
                 <p>
-                    <input type="checkbox"/> Homestays
+                <input type="checkbox" checked={propertyState.includes("homestay")} onChange={()=>{onPropertyStateChange("homestay")}}/> Homestays
                 </p>
             </div>
             <div>
@@ -516,7 +517,7 @@ export default function LeftNavigation(){
 
         </div>
     
-        <span>Other Areas</span>
+        {/* <span>Other Areas</span>
         <div className="checkbox-display">
             <div>
                 <p>
@@ -575,23 +576,9 @@ export default function LeftNavigation(){
 
 
             
-        </div>
+        </div> */}
       
-        <h5>Room Viws</h5>
-<div className="checkbox-display">
-    <div>
-        <p>
-                <input type="checkbox"/> Garder View
-            </p>
-        </div>
-        <div>
-            <span>(351)</span>
-
-        </div>
-
-   
-</div>
-<h5>MMT Luxe Selections</h5>
+{/* <h5>MMT Luxe Selections</h5>
 <div className="checkbox-display">
     <div>
         <p>
@@ -604,7 +591,7 @@ export default function LeftNavigation(){
         </div>
 
   
-</div>
+</div> */}
 
 <h5>Amenities</h5>
 <input className="search-aminities" type="text" placeholder="&#xf002 Search Aminities" style={{fontFamily: "Arial, FontAwesome"}}/>
@@ -713,60 +700,6 @@ export default function LeftNavigation(){
     </div>
     <div>
         <span>(1)</span>
-
-    </div>
-
-   
-</div>
-
-<h5>House Rules</h5>
-<div className="checkbox-display">
-    <div>
-        <p>
-            <input type="checkbox"/> Smooking Allowed
-        </p>
-    </div>
-    <div>
-        <span>(17)</span>
-
-    </div>
-
-   
-</div>
-<div className="checkbox-display">
-    <div>
-        <p>
-            <input type="checkbox"/> Unmarried Couples Allowed
-        </p>
-    </div>
-    <div>
-        <span>(23)</span>
-
-    </div>
-
-   
-</div>
-<div className="checkbox-display">
-    <div>
-        <p>
-            <input type="checkbox"/> Alcohol
-        </p>
-    </div>
-    <div>
-        <span>(14)</span>
-
-    </div>
-
-    
-</div>
-<div className="checkbox-display">
-    <div>
-        <p>
-            <input type="checkbox"/> Pets Allowed
-        </p>
-    </div>
-    <div>
-        <span>(5)</span>
 
     </div>
 

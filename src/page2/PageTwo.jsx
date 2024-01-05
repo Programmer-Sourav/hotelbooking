@@ -11,7 +11,8 @@ import { AppContext } from "../contexts/AppContext"
 
 export default function PageTwo(){
 
-const { priceRangeArrayForCheckbox, priceState, hotels } = useContext(AppContext)
+const { priceRangeArrayForCheckbox, priceState, hotels, searchByBudgetState,
+     budgetState, starState, ratingState, propertyState, onPropertyStateChange, mmtValueState, onMMTStateChange} = useContext(AppContext)
 
 let filteredList = [...hotels];
 console.log(hotels, filteredList)
@@ -35,28 +36,47 @@ if(priceState){
     }
     if(priceState.includes(4))
     {
-      filteredList = filteredList.filter((eachItem)=>(eachItem.hotel_rate.find((item)=>(item.rate>7500 && item.rate<=9500))))
+      filteredList = [...hotels].filter((eachItem)=>(eachItem.hotel_rate.find((item)=>(item.rate>7500 && item.rate<=9500))))
      
     }
     if(priceState.includes(5))
     {
-      filteredList = filteredList.filter((eachItem)=>(eachItem.hotel_rate.find((item)=>(item.rate>9500 && item.rate<=15000))))
+      filteredList = [...hotels].filter((eachItem)=>(eachItem.hotel_rate.find((item)=>(item.rate>9500 && item.rate<=15000))))
      
     }
     if(priceState.includes(6))
     {
-      filteredList = filteredList.filter((eachItem)=>(eachItem.hotel_rate.find((item)=>(item.rate>15000 && item.rate<=30000))))
+      filteredList = [...hotels].filter((eachItem)=>(eachItem.hotel_rate.find((item)=>(item.rate>15000 && item.rate<=30000))))
      
     }
     if(priceState.includes(7))
     {
-      filteredList = filteredList.filter((eachItem)=>(eachItem.hotel_rate.find((item)=>(item.rate>30000))))
+      filteredList = [...hotels].filter((eachItem)=>(eachItem.hotel_rate.find((item)=>(item.rate>30000))))
      
     }
-}
+ }
 
-console.log(444, filteredList)
+ if(searchByBudgetState && budgetState){
+    filteredList = [...hotels].filter((eachItem)=>(eachItem.hotel_rate.find((item)=>(item.rate>=budgetState.min && item.rate<=budgetState.max))))
+ }
 
+ if(starState.length>0){
+    filteredList = [...hotels].filter((eachItem)=>(eachItem.starCategory && starState.find((starItem)=>(starItem===eachItem.starCategory))))
+ }
+
+ if(ratingState.length>0){
+    filteredList = [...hotels].filter((eachItem)=>(eachItem.rating_review && eachItem.rating_review.rating>ratingState.find((rating)=>(rating))))
+ }
+
+ if(propertyState.length>0){
+    filteredList = [...hotels].filter((eachItem)=>(eachItem.propertyType && propertyState.find((property)=>(property=== eachItem.propertyType))))
+ }
+
+ if(mmtValueState){
+    filteredList = [...hotels].filter((eachItem)=>(eachItem.mmtValueStay && eachItem.mmtValueStay))
+ }
+
+console.log(999, filteredList)
 return(
 <div>
 <head>

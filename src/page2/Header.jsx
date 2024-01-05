@@ -31,12 +31,12 @@ export default function Header(){
                            Homestays<br/>& Villas
                        </a>
                    </li>
-                   <li>
+                   {/* <li>
                        <a href="#">
                            <img className="header-img" src={HolidayIcon} alt=""/><br/>
                            Holidya <br/> Packages
                        </a>
-                   </li>
+                   </li> */}
                   
                </ul>
            </div>

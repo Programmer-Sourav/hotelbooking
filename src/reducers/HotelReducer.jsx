@@ -10,13 +10,14 @@ export const initialState = {
     propertyTypeCheckbox: [],
     localityCheckbox: [],
     topAreas: [],
-    roomViews: [],
+    //roomViews: [],
     amenetiesCb: [],
-    mmtLuxCb: [],
+    //mmtLuxCb: [],
     bookingPrefCb: [],
-    houseRules: [],
-    searchBudget: {min: 0, max: 0},
-    searchByBudget: false
+    //houseRules: [],
+    searchBudget: {min: "", max: ""},
+    searchByBudget: false,
+    mmtValueStay: false
 }
 
 export const BOOKING_ACTIONS = {
@@ -37,7 +38,8 @@ export const BOOKING_ACTIONS = {
     BOOKING_PREF_CB: "BOOKING_PREF_CB",
     HOUSE_RULES: "HOUSE_RULES",
     SEARCH_BUDGET: "SEARCH_BUDGET",
-    SEARCH_BY_BUDGET: "SEARCH_BY_BUDGET"
+    SEARCH_BY_BUDGET: "SEARCH_BY_BUDGET",
+    MMT_VALUE_STAY : "MMT_VALUE_STAY"
 }
 
 export default function HotelReducer (state, action) {
@@ -51,19 +53,24 @@ export default function HotelReducer (state, action) {
         const itemId = action.payload
         return {...state, priceCheckBox : !state.priceCheckBox.includes(action.payload)? [...state.priceCheckBox, action.payload] : state.priceCheckBox.filter((eachId)=>(eachId!==itemId))}
         case BOOKING_ACTIONS.STAR_CATEGORY_CHECKBOX: 
+        return {...state, starCategoryCheckbox: !state.starCategoryCheckbox.includes(action.payload) ? [...state.starCategoryCheckbox, action.payload] : state.starCategoryCheckbox.filter((eachCat)=>(eachCat!==action.payload))}
         case BOOKING_ACTIONS.RATING_CHECKBOX: 
-        case BOOKING_ACTIONS.PROPERTY_CHECKBOX: 
+        return {...state, ratingCheckbox: !state.ratingCheckbox.includes(action.payload)? [...state.ratingCheckbox, action.payload] : state.ratingCheckbox.filter((eachRating)=>(eachRating!==action.payload)) }
+        case BOOKING_ACTIONS.PROPERTY_CHECKBOX:
+        return {...state, propertyTypeCheckbox: !state.propertyTypeCheckbox.includes(action.payload) ? [...state.propertyTypeCheckbox, action.payload] : state.propertyTypeCheckbox.filter((eachItem)=>(eachItem!==action.payload))}     
         case BOOKING_ACTIONS.LOCALITY_CHECKBOX:
         case BOOKING_ACTIONS.TOP_AREAS: 
         case BOOKING_ACTIONS.ROOM_VIEWS:
         case BOOKING_ACTIONS.AMNETIES_CB:
         case BOOKING_ACTIONS.MMT_LUX_CB:
         case BOOKING_ACTIONS.BOOKING_PREF_CB:
-        case BOOKING_ACTIONS.HOUSE_RULES:
+        //case BOOKING_ACTIONS.HOUSE_RULES:
         case BOOKING_ACTIONS.SEARCH_BUDGET: 
-        return {...state, searchBudget : {...state.searcgBudget, min: action.payload.min, max: action.payload.max}}   
+        return {...state, searchBudget : {...state.searchBudget, min: action.payload.min, max: action.payload.max}}   
         case BOOKING_ACTIONS.SEARCH_BY_BUDGET: 
         return {...state, searchByBudget : action.payload} 
+        case BOOKING_ACTIONS.MMT_VALUE_STAY: 
+        return {...state, mmtValueStay: action.payload}
         default: return state;    
     }
 }
