@@ -227,8 +227,8 @@ export default function AppProvider({children}){
   }
 
 
-  const onAmenityStateChange = () =>{
-
+  const onAmenityStateChange = (value) =>{
+   dispatch({type: BOOKING_ACTIONS.AMNETIES_CB, payload: value})
   }
 
   const onMMTStateChange = (value) =>{
@@ -254,6 +254,10 @@ export default function AppProvider({children}){
   const onBudgetMaxChange = (max) =>{
     dispatch({type: BOOKING_ACTIONS.SEARCH_BUDGET, payload: {min: budgetState.min, max: max}})
   }
+
+  const sortByValueChange = (sortVal) =>{
+     dispatch({type: BOOKING_ACTIONS.SORT_BY, payload: sortVal})
+  }
   
   const priceState = state.priceCheckBox
   const budgetState = state.searchBudget
@@ -270,7 +274,8 @@ export default function AppProvider({children}){
           amnetesState: state.amenetiesCb, mmtLuxState : state.mmtLuxCb, bookingPrefState: state.bookingPrefCb, houseRulesState: state.houseRules, 
           onSuggestedStateChange, onAmenityStateChange, onAreaStateChange, onBookingPrefStateChange, onPriceStateChange, onStarStateChange, 
           onRatingStateChange, onPropertyStateChange, onLocalityStateChange, onMMTStateChange, onHouseRuleStateChange, priceRangeArrayForCheckbox,
-          onBudgetRangeChange, budgetState: state.searchBudget, onBudgetMinChange, onBudgetMaxChange, searchByBudgetState: state.searchByBudget, mmtValueState: state.mmtValueStay
+          onBudgetRangeChange, budgetState: state.searchBudget, onBudgetMinChange, onBudgetMaxChange, searchByBudgetState: state.searchByBudget, 
+          mmtValueState: state.mmtValueStay, sortByValueChange, sortByState: state.sortBy, amenitiesState: state.amenities, onAmenityStateChange
        }}>{children}</AppContext.Provider>
     )
 }

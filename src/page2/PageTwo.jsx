@@ -6,16 +6,21 @@ import HotelCard from "./HotelCard"
 import Header from "./Header"
 import SecondaryHeader from "./SecondaryHeader"
 import LeftNavigation from "./LeftNavigation"
-import { useContext } from "react"
+import { useContext, useEffect } from "react"
 import { AppContext } from "../contexts/AppContext"
+import { getAllAminities } from "../api/remote"
 
 export default function PageTwo(){
 
 const { priceRangeArrayForCheckbox, priceState, hotels, searchByBudgetState,
-     budgetState, starState, ratingState, propertyState, onPropertyStateChange, mmtValueState, onMMTStateChange} = useContext(AppContext)
+     budgetState, starState, ratingState, propertyState, onPropertyStateChange, 
+     mmtValueState, onMMTStateChange, sortByValueChange, sortByState, dispatch, amnetesState} = useContext(AppContext)
+
 
 let filteredList = [...hotels];
 console.log(hotels, filteredList)
+
+useEffect(()=>{getAllAminities(dispatch)}, [])
 
 if(priceState){
     console.log(666, priceState)
@@ -76,7 +81,29 @@ if(priceState){
     filteredList = [...hotels].filter((eachItem)=>(eachItem.mmtValueStay && eachItem.mmtValueStay))
  }
 
-console.log(999, filteredList)
+ if(amnetesState.length>0){
+    filteredList = [...hotels].filter((eachHotel)=>(eachHotel.aminities && eachHotel.aminities.amenties.find((eachItem)=>(amnetesState.includes(eachItem)))))
+ }
+
+ let sortedList = [...filteredList]
+
+ if(sortByState){
+    switch(sortByState){
+        case "lth":
+        sortedList = [...sortedList].sort((a, b)=>(a.hotel_rate[0].rate> b.hotel_rate[0].rate ? 1 : -1))
+        break;
+        case "htl":
+        sortedList = [...sortedList].sort((a, b)=>(b.hotel_rate[0].rate> a.hotel_rate[0].rate ? 1 : -1))
+        break;
+        case "userrating":
+        sortedList = [...sortedList].sort((a, b)=>(b.rating_review && b.rating_review.rating> a.rating_review && a.rating_review.rating ? 1 : -1)) 
+        break; 
+        default: 
+        return sortedList
+    }
+ }
+
+//console.log(999, filteredList, sortedList)
 return(
 <div>
 <head>
@@ -149,11 +176,11 @@ return(
                             <label className="" for="sort">
                                 | Sort By:
                             </label>
-                            <select className="section-popularity" name="" id="">
+                            <select className="section-popularity" value={sortByState} onChange={(e)=>{sortByValueChange(e.target.value)}}>
                                 <option value="pop">Popularity</option>
-                                <option value="pop">Price-Low to High</option>
-                                <option value="pop">Price-High to Low</option>
-                                <option value="pop">User Rating-High to Low</option>
+                                <option value="lth">Price-Low to High</option>
+                                <option value="htl">Price-High to Low</option>
+                                <option value="userrating">User Rating-High to Low</option>
                             </select>
                             <label for="">| Showing 1847 properties in Goa</label>
 
@@ -190,7 +217,7 @@ return(
                         <h2 className="show-property">Showing Properties in Goa</h2>
                         {/* <!-- card --> */}
                         {
-                            filteredList.map((hotel)=>(
+                            sortedList.map((hotel)=>(
                                 <HotelCard data={hotel}/>
                             ))
                         }

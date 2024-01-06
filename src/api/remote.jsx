@@ -29,4 +29,16 @@ async function findHotelsByCity(dispatch, HOTEL_SEARCH){
         }
 }
 
-export { findHotelsByPlace, findHotelsByCity }
+async function getAllAminities(dispatch){
+    const ALL_AMINITIES = `${BASE_URL}aminities`
+    try{
+     const response = await fetch(ALL_AMINITIES)
+     const allAmeneties = await response.json()
+     dispatch({type: BOOKING_ACTIONS.AMENITIES, payload: allAmeneties.amenities})
+    }
+    catch(error){
+        throw error
+    }
+}
+
+export { findHotelsByPlace, findHotelsByCity , getAllAminities}

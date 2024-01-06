@@ -1,12 +1,24 @@
-import { useContext } from "react"
+import { useContext, useState } from "react"
 import { AppContext } from "../contexts/AppContext"
 
 export default function LeftNavigation(){
 
     const { priceRangeArrayForCheckbox, onPriceStateChange, priceState, onBudgetRangeChange, budgetState, 
       onBudgetMinChange, onBudgetMaxChange, searchByBudgetState, starState, ratingState, onStarStateChange, onRatingStateChange, propertyState,
-       onPropertyStateChange, mmtValueState, onMMTStateChange} = useContext(AppContext)
+       onPropertyStateChange, mmtValueState, onMMTStateChange, amnetesState, amenitiesState, onAmenityStateChange} = useContext(AppContext)
 
+   let amenitiesList = [...amenitiesState]
+   const showMoreLength = amenitiesList.length
+   console.log(44444, amenitiesList, amenitiesState)
+   const [showMore, setShowMore] = useState(false)
+
+
+   function showMoreList (){
+       setShowMore(showMore=>!showMore)
+    }
+   if(!showMore)
+   amenitiesList = amenitiesList.slice(0,3)
+   
     return(
         <div>
         <h4 className="select-filters">Select Filters</h4>
@@ -598,10 +610,11 @@ export default function LeftNavigation(){
  <br/>
 
 <b>Guests Love</b>
+{amenitiesList.map((eachItem)=>(
 <div className="checkbox-display">
     <div>
         <p>
-            <input type="checkbox"/> <i className="fa-solid fa-bolt"></i>  Swimming Pool
+            <input type="checkbox" checked={amnetesState.includes(eachItem)} onChange={()=>{onAmenityStateChange(eachItem)}}/> <i className="fa-solid fa-bolt"></i>  {eachItem}
         </p>
     </div>
     <div>
@@ -611,32 +624,7 @@ export default function LeftNavigation(){
 
   
 </div>
-<div className="checkbox-display">
-    <div>
-        <p>
-            <input type="checkbox"/> <i className="fa-solid fa-bolt"></i> WIFI
-        </p>
-    </div>
-    <div>
-        <span>(3341)</span>
-
-    </div>
-
-   
-</div>
-<div className="checkbox-display">
-    <div>
-        <p>
-            <input type="checkbox"/> <i className="fa-solid fa-bolt"></i> Spa
-        </p>
-    </div>
-    <div>
-        <span>(114)</span>
-
-    </div>
-
-   
-</div>
+))}
 <div className="checkbox-display">
     <div>
         <p>
@@ -644,7 +632,7 @@ export default function LeftNavigation(){
         </p>
     </div>
     <div>
-        <a href="#">Show 18 more</a>
+        <button onClick={()=>{showMoreList()}}>Show {showMoreLength-3} {!showMore ? "more" : "less"}</button>
 
     </div>
    

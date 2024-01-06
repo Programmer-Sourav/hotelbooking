@@ -17,7 +17,9 @@ export const initialState = {
     //houseRules: [],
     searchBudget: {min: "", max: ""},
     searchByBudget: false,
-    mmtValueStay: false
+    mmtValueStay: false,
+    sortBy: "",
+    amenities: []
 }
 
 export const BOOKING_ACTIONS = {
@@ -39,7 +41,9 @@ export const BOOKING_ACTIONS = {
     HOUSE_RULES: "HOUSE_RULES",
     SEARCH_BUDGET: "SEARCH_BUDGET",
     SEARCH_BY_BUDGET: "SEARCH_BY_BUDGET",
-    MMT_VALUE_STAY : "MMT_VALUE_STAY"
+    MMT_VALUE_STAY : "MMT_VALUE_STAY",
+    SORT_BY : "SORT_BY",
+    AMENITIES : "AMENITIES"
 }
 
 export default function HotelReducer (state, action) {
@@ -48,6 +52,8 @@ export default function HotelReducer (state, action) {
         return {...state, hotels: action.payload}
         case BOOKING_ACTIONS.SEARCH_HOTEL: 
         return {...state, search: action.payload}
+        case BOOKING_ACTIONS.AMENITIES: 
+        return {...state, amenities: action.payload}
         case BOOKING_ACTIONS.SUGGESTED_CHECKBOX: 
         case BOOKING_ACTIONS.PRICE_CHECKBOX: 
         const itemId = action.payload
@@ -62,6 +68,7 @@ export default function HotelReducer (state, action) {
         case BOOKING_ACTIONS.TOP_AREAS: 
         case BOOKING_ACTIONS.ROOM_VIEWS:
         case BOOKING_ACTIONS.AMNETIES_CB:
+        return {...state, amenetiesCb: !state.amenetiesCb.includes(action.payload)? [...state.amenetiesCb, action.payload] : state.amenetiesCb.filter((eachItem)=>(eachItem!==action.payload)) }    
         case BOOKING_ACTIONS.MMT_LUX_CB:
         case BOOKING_ACTIONS.BOOKING_PREF_CB:
         //case BOOKING_ACTIONS.HOUSE_RULES:
@@ -71,6 +78,8 @@ export default function HotelReducer (state, action) {
         return {...state, searchByBudget : action.payload} 
         case BOOKING_ACTIONS.MMT_VALUE_STAY: 
         return {...state, mmtValueStay: action.payload}
+        case BOOKING_ACTIONS.SORT_BY: 
+        return {...state, sortBy: action.payload}
         default: return state;    
     }
 }
