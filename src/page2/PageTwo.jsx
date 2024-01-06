@@ -1,5 +1,7 @@
-import "./css/index.css"
+import "./css/index.css";
 import "./css/bootstrap.min.css"
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 
 
 import HotelCard from "./HotelCard"

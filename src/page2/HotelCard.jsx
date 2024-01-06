@@ -1,11 +1,18 @@
+import { useNavigate } from "react-router-dom"
 import { calculateTax } from "../Utility/utility"
 
 export default function HotelCard({data}){
 
     console.log(1234, data)
 
+    const navigate = useNavigate()
+
+    const goToDetails = (id) =>{
+        navigate(`/hoteldetails/${id}`)
+    }
+
     return(
-        <div className="parent-card">
+        <div className="parent-card" onClick={()=>{goToDetails(data._id)}}>
                         <div className="card-section">
                          
                             <div className="img-detail">
