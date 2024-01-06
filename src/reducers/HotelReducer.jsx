@@ -19,7 +19,8 @@ export const initialState = {
     searchByBudget: false,
     mmtValueStay: false,
     sortBy: "",
-    amenities: []
+    amenities: [],
+    searchAmenities: ""
 }
 
 export const BOOKING_ACTIONS = {
@@ -43,7 +44,8 @@ export const BOOKING_ACTIONS = {
     SEARCH_BY_BUDGET: "SEARCH_BY_BUDGET",
     MMT_VALUE_STAY : "MMT_VALUE_STAY",
     SORT_BY : "SORT_BY",
-    AMENITIES : "AMENITIES"
+    AMENITIES : "AMENITIES",
+    SEARCH_AMENITIES: "SEARCH_AMENITIES"
 }
 
 export default function HotelReducer (state, action) {
@@ -80,6 +82,8 @@ export default function HotelReducer (state, action) {
         return {...state, mmtValueStay: action.payload}
         case BOOKING_ACTIONS.SORT_BY: 
         return {...state, sortBy: action.payload}
+        case BOOKING_ACTIONS.SEARCH_AMENITIES: 
+        return {...state, searchAmenities : action.payload}
         default: return state;    
     }
 }

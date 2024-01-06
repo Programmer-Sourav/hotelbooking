@@ -258,6 +258,10 @@ export default function AppProvider({children}){
   const sortByValueChange = (sortVal) =>{
      dispatch({type: BOOKING_ACTIONS.SORT_BY, payload: sortVal})
   }
+
+  const onSearchAminityChange = (searchValue) =>{
+    dispatch({type: BOOKING_ACTIONS.SEARCH_AMENITIES, payload: searchValue})
+  }
   
   const priceState = state.priceCheckBox
   const budgetState = state.searchBudget
@@ -275,7 +279,8 @@ export default function AppProvider({children}){
           onSuggestedStateChange, onAmenityStateChange, onAreaStateChange, onBookingPrefStateChange, onPriceStateChange, onStarStateChange, 
           onRatingStateChange, onPropertyStateChange, onLocalityStateChange, onMMTStateChange, onHouseRuleStateChange, priceRangeArrayForCheckbox,
           onBudgetRangeChange, budgetState: state.searchBudget, onBudgetMinChange, onBudgetMaxChange, searchByBudgetState: state.searchByBudget, 
-          mmtValueState: state.mmtValueStay, sortByValueChange, sortByState: state.sortBy, amenitiesState: state.amenities, onAmenityStateChange
+          mmtValueState: state.mmtValueStay, sortByValueChange, sortByState: state.sortBy, amenitiesState: state.amenities, onAmenityStateChange,
+          searchAmenityState: state.searchAmenities, onSearchAminityChange
        }}>{children}</AppContext.Provider>
     )
 }

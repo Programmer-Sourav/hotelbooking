@@ -5,13 +5,16 @@ export default function LeftNavigation(){
 
     const { priceRangeArrayForCheckbox, onPriceStateChange, priceState, onBudgetRangeChange, budgetState, 
       onBudgetMinChange, onBudgetMaxChange, searchByBudgetState, starState, ratingState, onStarStateChange, onRatingStateChange, propertyState,
-       onPropertyStateChange, mmtValueState, onMMTStateChange, amnetesState, amenitiesState, onAmenityStateChange} = useContext(AppContext)
+       onPropertyStateChange, mmtValueState, onMMTStateChange, amnetesState, amenitiesState, onAmenityStateChange, searchAmenityState, onSearchAminityChange} = useContext(AppContext)
 
    let amenitiesList = [...amenitiesState]
    const showMoreLength = amenitiesList.length
-   console.log(44444, amenitiesList, amenitiesState)
+ 
    const [showMore, setShowMore] = useState(false)
 
+   if(searchAmenityState){
+    amenitiesList = amenitiesList.filter((amenity)=>(amenity.toLowerCase().includes(searchAmenityState.toLowerCase())))
+ }
 
    function showMoreList (){
        setShowMore(showMore=>!showMore)
@@ -606,7 +609,7 @@ export default function LeftNavigation(){
 </div> */}
 
 <h5>Amenities</h5>
-<input className="search-aminities" type="text" placeholder="&#xf002 Search Aminities" style={{fontFamily: "Arial, FontAwesome"}}/>
+<input className="search-aminities" value={searchAmenityState} type="text" placeholder="Search Aminities" style={{fontFamily: "Arial, FontAwesome"}} onChange={(e)=>{onSearchAminityChange(e.target.value)}}/>
  <br/>
 
 <b>Guests Love</b>

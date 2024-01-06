@@ -14,11 +14,13 @@ export default function PageTwo(){
 
 const { priceRangeArrayForCheckbox, priceState, hotels, searchByBudgetState,
      budgetState, starState, ratingState, propertyState, onPropertyStateChange, 
-     mmtValueState, onMMTStateChange, sortByValueChange, sortByState, dispatch, amnetesState} = useContext(AppContext)
+     mmtValueState, onMMTStateChange, sortByValueChange, sortByState, dispatch, amnetesState, searchAmenityState} = useContext(AppContext)
 
 
 let filteredList = [...hotels];
 console.log(hotels, filteredList)
+let amenitiesList = [...amnetesState]
+
 
 useEffect(()=>{getAllAminities(dispatch)}, [])
 
@@ -102,6 +104,8 @@ if(priceState){
         return sortedList
     }
  }
+
+
 
 //console.log(999, filteredList, sortedList)
 return(
