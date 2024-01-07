@@ -13,3 +13,16 @@ export function calculateTax(hotelPrice){
     const totalTax = (hotelPrice * 28)/100;
     return totalTax;
 }
+
+
+export function calculateTotal(hotelPrice){
+    const totalPrice = hotelPrice + calculateTax(hotelPrice)
+    return totalPrice;
+}
+
+export function calculateTotalWithCouponCode(hotelPrice){
+    //say Rs. 180 + 9% of hotelPrice
+    const couponValue = 9*hotelPrice/100 + 180;
+    const totalPrice = hotelPrice + couponValue;
+    return totalPrice
+}

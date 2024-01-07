@@ -1,8 +1,12 @@
 body{
     width: 100%;
 }
+mainpart{
+   
+}
+
 /* start header */
-header h3 {
+headerparent h3 {
     background-color: #23364C;
     color: white;
     padding: 10px;
