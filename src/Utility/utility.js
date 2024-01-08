@@ -26,3 +26,18 @@ export function calculateTotalWithCouponCode(hotelPrice){
     const totalPrice = hotelPrice + couponValue;
     return totalPrice
 }
+
+
+export function formatNumber(rating){
+    //if rating is not given/empty, make it 0.0
+    if(rating==="" || rating==="null" || isNaN(rating)){
+        return "0.0"
+    }
+    if(Number(rating)>=0 && Number(rating)<10 && !rating.toString().includes('.')){
+        return `${rating}.0`
+    }
+    if (rating.toString().includes('.')) {
+        return rating.toString();
+    }
+
+}

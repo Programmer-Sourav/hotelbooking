@@ -442,8 +442,8 @@ input:checked+.slider:before {
 /* right card section */
 .parent-card{
     border: 1px solid #949494;
-    border-radius: 7px;
-
+    border-radius: 8px;
+    margin: 8px;
 }
 .card-section{
     display: flex;
@@ -456,8 +456,9 @@ input:checked+.slider:before {
 /* img-detail */
 .img-detail{
     display: flex;
-    padding-top: 10px; 
+    padding-top: 8px; 
     gap: 20px;
+    width: 75%;
 }
 /* rat-name-hotel */
 .rat-name-hotel{
@@ -467,7 +468,7 @@ input:checked+.slider:before {
     display: flex;
     padding-left: 3px !important;
     font-size: 16px;
-    margin-top: 6px;
+    margin-top: 4px;
 }
 .rat-star li{
     list-style: none;
@@ -510,7 +511,7 @@ input:checked+.slider:before {
 }
 .view-all-img{
     display: flex;
-    gap: 5px;
+    gap: 4px;
 }
 .detail-view{
     background-image: url(../images/view.jpg);

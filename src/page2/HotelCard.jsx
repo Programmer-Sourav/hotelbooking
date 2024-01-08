@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom"
-import { calculateTax } from "../Utility/utility"
+import { calculateTax, formatNumber } from "../Utility/utility"
+import ReactStars from "react-stars"
 
 export default function HotelCard({data}){
 
@@ -47,11 +48,8 @@ export default function HotelCard({data}){
                                     </div>
                                     <div>
                                         <ul className="rat-star">
-                                           <li><i className="fa-solid fa-star"></i></li>
-                                           <li><i className="fa-solid fa-star"></i></li>
-                                           <li><i className="fa-solid fa-star"></i></li>
-                                           <li><i className="fa-regular fa-star"></i></li>
-                                           <li><i className="fa-regular fa-star"></i></li>
+                                           {/* <li><i className="fa-solid fa-star"></i></li> */}
+                                          <ReactStars count={5} size={24} value={data.rating_review && data.rating_review.rating} color1={'#cccccc'} color2={'#FFD700'} edit={false} />
                                         </ul>
                                         
                                     </div>
@@ -73,7 +71,7 @@ export default function HotelCard({data}){
                             {/* <!-- right end card section --> */}
                             <div>
                                 <div className="end-right">
-                                    <h3>Very Good <span>3.9</span></h3>
+                                    <h3>Very Good <span>{formatNumber(data.rating_review && data.rating_review.rating)}</span></h3>
                                     
                                     <span>(821 Ratings)</span>
                                     <br/>
