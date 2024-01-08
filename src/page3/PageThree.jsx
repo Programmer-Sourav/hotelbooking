@@ -8,7 +8,9 @@ import RoomDummy from "./images/room.jpg"
 import { useContext } from "react";
 import { useParams } from "react-router-dom";
 import { AppContext } from "../contexts/AppContext";
-import { calculateTax } from "../Utility/utility";
+import { calculateTax, calculateTotal } from "../Utility/utility";
+import MapComponent from "./MapComponent";
+import { Rating } from "./RatingComponent";
 
 export default function PageThree(){
 
@@ -85,10 +87,7 @@ return(
                 </div>
                 <div className="hotel-name">
                     <div>
-                        <h2>{hotelData.name}, {hotelData.city} <span className="rating-solid"><i
-                                    className="fa-solid fa-star"></i> <i className="fa-solid fa-star"></i> <i
-                                    className="fa-solid fa-star"></i> <i className="fa-solid fa-star"></i> <i
-                                    className="fa-solid fa-star"></i></span></h2>
+                        <h2>{hotelData.name}, {hotelData.city} <Rating rating={3.3}/></h2>
                     </div>
                     <div>
                         <p><span><i className="fa-solid fa-location-dot"></i></span> Sahibabad, Ghaziabad | <span
@@ -187,9 +186,9 @@ return(
                             <div className="available-offer">
                                 <span>Per Night</span>
                                 <h6><del>₹2,190</del></h6>
-                                <h4>₹ {}</h4>
-                                <h5>+₹ {} taxes & fees</h5>
-                                <p>To Get This @INR1,890 or Less <a href="#">LOGIN NOW</a></p>
+                                <h4>₹ {hotel.rate}</h4>
+                                <h5>+₹ {calculateTax(hotel.rate)} taxes & fees</h5>
+                                <p>To Get This @INR{calculateTotal(hotel.rate).toFixed(2)} or Less <a href="#">LOGIN NOW</a></p>
                             </div>
                             <div className="select-room-btn">
                                 <button>Select Room</button>
@@ -205,8 +204,8 @@ return(
         {/* <!-- location --> */}
         <section>
             <div className="location">
-                <p>Location Section</p>
-
+                <p>Location</p>
+                 <MapComponent/>
             </div>
         </section>
         {/* <!-- amenities --> */}
@@ -229,10 +228,11 @@ return(
                     <div>
                         <h5>Highlighted Amenities</h5>
                         <ul>
-                            <li>- Swimming Pool</li>
-                            <li>- Spa</li>
-                            <li>- Restaurant</li>
-                            <li>- Lounge</li>
+                            {hotelData.aminities.amenties.map((eachItem)=>(
+                                <li>-{eachItem}</li>
+                            ))
+                           
+                           }
                         </ul>
 
                     </div>
