@@ -16,4 +16,6 @@ Features:
 6. Use of useState and useReducer
 7. Selecting Rooms from different Room types.
 8. Updating inventory
-9. Calculating prices etc. 
+9. Calculating prices etc.
+10. Worked with Google Maps APIs
+11. Worked with APIs etc. 
