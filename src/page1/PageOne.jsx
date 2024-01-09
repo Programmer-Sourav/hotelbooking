@@ -66,7 +66,9 @@ export default function PageOne() {
               </p>
               <span>{format(value, 'EEEE')}</span>
         </div>
-          );   
+          );  
+          
+          
 
     return (
         <div>

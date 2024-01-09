@@ -22,6 +22,9 @@ export default function AppProvider({children}){
     const [perNightCharge, setPerNightCharge] = useState(0)
     const [vipCharge, setVipCharge] = useState(0)
     const [packageCharge, setPackageCharge] = useState(0)
+    const [roomTypeId, setRoomTypeId] = useState("")
+    const [selectedRoomCode, setSelectedRoomCode] = useState("")
+
 
 
 
@@ -263,6 +266,15 @@ export default function AppProvider({children}){
     dispatch({type: BOOKING_ACTIONS.SEARCH_AMENITIES, payload: searchValue})
   }
   
+
+  const onSetRoomTypeId = (roomTypeId) =>{
+    setRoomTypeId(roomTypeId)
+  }
+
+  const onSetSelectedRoomCode = (roomCode) =>{
+    setSelectedRoomCode(roomCode)
+  }
+
   const priceState = state.priceCheckBox
   const budgetState = state.searchBudget
     return(
@@ -280,7 +292,7 @@ export default function AppProvider({children}){
           onRatingStateChange, onPropertyStateChange, onLocalityStateChange, onMMTStateChange, onHouseRuleStateChange, priceRangeArrayForCheckbox,
           onBudgetRangeChange, budgetState: state.searchBudget, onBudgetMinChange, onBudgetMaxChange, searchByBudgetState: state.searchByBudget, 
           mmtValueState: state.mmtValueStay, sortByValueChange, sortByState: state.sortBy, amenitiesState: state.amenities, onAmenityStateChange,
-          searchAmenityState: state.searchAmenities, onSearchAminityChange
+          searchAmenityState: state.searchAmenities, onSearchAminityChange, roomTypeId, selectedRoomCode, setRoomTypeId, onSetSelectedRoomCode, 
        }}>{children}</AppContext.Provider>
     )
 }

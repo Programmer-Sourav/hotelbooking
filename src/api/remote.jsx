@@ -41,4 +41,21 @@ async function getAllAminities(dispatch){
     }
 }
 
-export { findHotelsByPlace, findHotelsByCity , getAllAminities}
+async function selectRoomForReservation(dispatch, hotelId, roomTypeId, room_type_id_code,  roomCount){
+    
+    const HOTEL_SELECT = `reservations/${hotelId}/${roomTypeId._id}/${room_type_id_code}/${roomCount}`
+    const SELECT_ROOM = `${BASE_URL}${HOTEL_SELECT}`
+    try {
+        const response = await fetch(SELECT_ROOM, {
+            method: 'POST', 
+            headers: {
+                'Content-Type': 'application/json', 
+            }
+        });
+    }
+    catch(error){
+         throw error
+    }
+}
+
+export { findHotelsByPlace, findHotelsByCity , getAllAminities, selectRoomForReservation}

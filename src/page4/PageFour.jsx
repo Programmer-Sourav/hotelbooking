@@ -5,10 +5,13 @@ import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import HotelIcon from "./images/ginger.jpg"
 import { useContext, useState } from "react";
 import { AppContext } from "../contexts/AppContext";
+import { useParams } from "react-router-dom";
+import { calculateTax, calculateTotal, convertDateFormat, differenceBetweenDates, formatCheckoutDateTime, formatDateTime } from "../Utility/utility";
 
 export default function PageFour(){
   
-    const { hotels } = useContext(AppContext)
+    const { hotels, start_date, end_date, adultCount, roomCount, roomTypeId, selectedDate, finalDate } = useContext(AppContext)
+    const { id } = useParams()
 
     const [addBreakfastOption, setAddBreakfastOption] = useState("breakfast")
     const [firstName, setFirstName] = useState("")
@@ -18,6 +21,12 @@ export default function PageFour(){
     const [couponCode, setCouponCode] = useState("")
 
 
+    function getHotelSpeceficData(){
+        return hotels.find((hotel)=>(hotel._id===id))
+      }
+
+
+    const roomDetails = getHotelSpeceficData()  
 
     const onChangeRadio = (value) =>{
          setAddBreakfastOption(value)
@@ -26,8 +35,14 @@ export default function PageFour(){
     const onCouponCodeChange = (value) =>{
         setCouponCode(value)
     }
+  
+    const roomByType = roomDetails && roomDetails.hotel_rate.find((room)=>(room.room_type_id._id===roomTypeId._id))
+    const roomRate = roomByType.rate;
+    console.log(3456, roomRate, roomTypeId)
 
-    
+    const checkoutDate = convertDateFormat(selectedDate);
+    const checkinDate = convertDateFormat(finalDate)
+
     return(
         <div>
         <head>
@@ -61,7 +76,7 @@ export default function PageFour(){
                             
                             <div className="review-card-section">
                                
-                                <h2>Ginger Goa, Panjim</h2>
+                                <h2>{roomDetails.name}, {roomDetails.city}</h2>
                                 <div className="review-section">
                                     <div className="review-rating">
                                         <ul>
@@ -77,7 +92,7 @@ export default function PageFour(){
                                     </div>
     
                                 </div>
-                                <p>Plot No. 37,38.Near Passport Office.SGO Complex. EDC, Patn, Goa, India</p>
+                                <p>{roomDetails.address}</p>
     
     
     
@@ -97,21 +112,19 @@ export default function PageFour(){
                                     <div className="check-in">
                                         <p>
                                         <h6>CHECK IN</h6>
-                                        Wed <span>27Dec </span>2023 <br/>
-                                        2PM
+                                        {formatDateTime(convertDateFormat(selectedDate))}
                                         </p>
                                     </div>
     
                                     <div className="night-stay-parent">
     
-                                        <span className="night-stay">1 NIGHT</span>
+                                        <span className="night-stay">{differenceBetweenDates(checkoutDate, checkinDate)} NIGHT</span>
                                     </div>
     
                                     <div className="check-out">
                                         <p>
-                                        <h6>CHECK OUT</h6>
-                                        Wed<span>28Dec</span>2023 <br/>
-                                        12PM
+                                         <h6>CHECK OUT</h6>   
+                                         {formatCheckoutDateTime(convertDateFormat(finalDate))}
                                         </p>
                                     </div>
     
@@ -119,7 +132,7 @@ export default function PageFour(){
                                 </div>
                                
                                 <div className="night-stay-detail">
-                                    <h6>1 Night | 2 Adults | 1 Room</h6>
+                                    <h6>{differenceBetweenDates(checkoutDate,checkinDate)} Night | {adultCount} Adults | {roomCount} Room</h6>
                                 </div>
                             </div>
                         </section>
@@ -255,11 +268,11 @@ export default function PageFour(){
                             <h4>Price Breakup</h4>
                             <div className="price-breakup">
                                 <div>
-                                    <b>1 Room x 1 Night</b><br/>
+                                    <b>{roomCount} Room x {differenceBetweenDates(checkoutDate,checkinDate)} Night</b><br/>
                                     <span>Base Price</span>
                                 </div>
                                 <div>
-                                    <span className="price">₹ 5,499</span>
+                                    <span className="price">{roomRate * differenceBetweenDates(checkoutDate,checkinDate)}</span>
                                 </div>
                             </div>
                             <hr/>
@@ -268,7 +281,7 @@ export default function PageFour(){
                                     <b>Hotel Taxes</b> <i className="fa-solid fa-circle-info"></i>
                                 </div>
                                 <div>
-                                    <span className="taxes">₹ 660</span>
+                                    <span className="taxes">₹ {calculateTax(roomRate * differenceBetweenDates(checkoutDate,checkinDate))}</span>
                                 </div>
                             </div>
                             <hr/>
@@ -288,7 +301,7 @@ export default function PageFour(){
                                     <b>Total Amount to be paid</b>
                                 </div>
                                 <div>
-                                    <span className="bill">₹ 6,159</span>
+                                    <span className="bill">₹ {calculateTotal(roomRate * differenceBetweenDates(checkoutDate,checkinDate))}</span>
                                 </div>
                             </div>
                         </div>

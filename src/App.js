@@ -7,6 +7,7 @@ import PageTwo from './page2/PageTwo';
 import PageThree from './page3/PageThree';
 
 
+
 function App() {
   return (
     <div className="App">
@@ -14,9 +15,8 @@ function App() {
       <Route path='/' element={<PageOne/>}/>  
       <Route path='/hotel-search/city/:city/start_date/:startDate/end-date/:endDate/rooms/:roomCount/adult/:adultCount/child/:childAgeCount/night/:perNightCharge/vip/:vipCharge/package/:packageCharge' element={<PageTwo/>}></Route>
       <Route path='/hoteldetails/:id' element={<PageThree/>}></Route>
-      <Route path="/review" element={<PageFour/>}></Route>
+      <Route path="/hotels/review/:id" element={<PageFour/>}></Route>
       </Routes>
-     
     </div>
   );
 }

@@ -6,17 +6,20 @@ import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import DummyImage from "./images/img03.jpg"
 import RoomDummy from "./images/room.jpg"
 import { useContext } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { AppContext } from "../contexts/AppContext";
-import { calculateTax, calculateTotal } from "../Utility/utility";
+import { calculateTax, calculateTotal, formatNumber } from "../Utility/utility";
 import MapComponent from "./MapComponent";
 import { Rating } from "./RatingComponent";
+import ReactStars from "react-stars";
+import HotelImage from "./images/img.jpg"
+import { selectRoomForReservation } from "../api/remote";
 
 export default function PageThree(){
 
 const { id } = useParams()
 
-const { hotels } = useContext(AppContext)
+const { hotels, dispatch, roomCount, setRoomTypeId, onSetSelectedRoomCode} = useContext(AppContext)
 
 const hotelData = getHotelSpeceficData()
 
@@ -24,7 +27,42 @@ function getHotelSpeceficData(){
   return hotels.find((hotel)=>(hotel._id===id))
 }
 
+const dummySimilarHotels = hotels.filter((hotel)=>hotel._id!==id)
 
+const navigate = useNavigate()
+
+const goToReviewPage = (roomTypeId, roomTypeCode) =>{
+    navigate(`/hotels/review/${id}`)
+    setRoomTypeId(roomTypeId)
+    onSetSelectedRoomCode(roomTypeCode)
+}
+
+//console.log(777, hotelData)
+const keyVal = [{"Swiming Pool" : "fa-solid fa-water-ladder"},
+{"Spa Tub": "fa-solid fa-spa"},
+{"Restaurant":"fa-solid fa-utensils"},
+{"Lounge":"fa-solid fa-water-ladder"},
+{"Bar":"fa-solid fa-whiskey-glass"},
+{"room service": "fa-solid fa-bell-concierge"},
+{"Fire place": "fa-solid fa-fire"},
+{"Heater":"fa-solid fa-heat"},
+{"Geysar":"fa-solid fa-heat"},
+{"Living Area": "fa-solid fa-sprinkler"},
+{"Fitness Center" : "fa-solid fa-water-ladder"},
+{"cook" : "fa-solid fa-fire"},
+{"Balcony" : "fa-solid fa-spa"},
+{"Home Theatre": "fa-solid fa-sprinkler"},
+{"River view" : "fa-solid fa-whiskey-glass"},
+{"Extra space": "fa-solid fa-bell-concierge"}
+] 
+
+// const keys = ["Swiming Pool", "Spa"]
+// const aminities = ["Swimming Pool", "Gym", "Spa"]
+
+// function filterAms(){
+//     return keyVal.filter((item) => aminities.includes(Object.keys(item)[0]));
+// }
+// console.log(777, filterAms())
 return(
 <div> 
 <head>
@@ -87,7 +125,7 @@ return(
                 </div>
                 <div className="hotel-name">
                     <div>
-                        <h2>{hotelData.name}, {hotelData.city} <Rating rating={3.3}/></h2>
+                        <h2>{hotelData.name}, {hotelData.city} <Rating rating={hotelData.rating_review && hotelData.rating_review.rating}/></h2>
                     </div>
                     <div>
                         <p><span><i className="fa-solid fa-location-dot"></i></span> Sahibabad, Ghaziabad | <span
@@ -191,7 +229,8 @@ return(
                                 <p>To Get This @INR{calculateTotal(hotel.rate).toFixed(2)} or Less <a href="#">LOGIN NOW</a></p>
                             </div>
                             <div className="select-room-btn">
-                                <button>Select Room</button>
+                                {/* <button onClick={()=>{selectRoomForReservation(dispatch, id, hotel.room_type_id, hotel.room_type_id.room_type_id, roomCount)}}>Select Room</button> */}
+                                <button onClick={()=>{goToReviewPage(hotel.room_type_id, hotel.room_type_id.room_type_id)}}>Select Room</button>
                             </div>
                         </div>
                     </td>
@@ -211,16 +250,26 @@ return(
         {/* <!-- amenities --> */}
         <section>
             <div className="amenities-all">
-                <h4>Amenities at Country Inn and Suites by Radisson, Sahibabad</h4>
-                <div>
-                    <ul className="popu-amenities">
-                        <li><span><i className="fa-solid fa-water-ladder"></i></span> Swimming Pool</li>
-                        <li><span><i className="fa-solid fa-spa"></i></span> Spa</li>
-                        <li><span><i className="fa-solid fa-utensils"></i></span> Restaurant</li>
-                        <li><span><i className="fa-solid fa-water-ladder"></i></span> Lounge</li>
-                        <li><span><i className="fa-solid fa-whiskey-glass"></i></span> Bar</li>
-                    </ul>
-                </div>
+              <h4>{hotelData.name}, {hotelData.city}</h4>
+              <div>
+               <ul className="popu-amenities">
+              {hotelData.aminities && hotelData.aminities.amenties.map((amenity, index) => {
+               const matchingAmenity = keyVal.find((item) => amenity.toLowerCase() === Object.keys(item)[0].toLowerCase());
+
+           return (
+              <li key={index}>
+                <span>
+            {matchingAmenity && <i className={matchingAmenity[Object.keys(matchingAmenity)[0]]}></i>}
+          </span> 
+          {matchingAmenity && Object.keys(matchingAmenity)[0]}
+        </li>
+      );
+    })}
+  </ul>
+</div>
+
+
+
                 <hr/>
                 {/* <!--  --> */}
                 <div className="all-avaible-info">
@@ -298,25 +347,32 @@ return(
             </div>
         </section>
         {/* <!-- similar properties --> */}
+        {/* Basically, it may be based up on some business condition, like star category, user review or anything related to business condition */}
         <section>
             <h4 className="similar-main">Similar Properties</h4>
+            { dummySimilarHotels.map((hotel)=>(
             <div className="card-similar-properties">
                 
                 <div>
-                    <img src="./images/img.jpg" alt=""/>
-                    <h5>Country Inn and Suites by Radisson, Sahibabad</h5>
+                    <img src={HotelImage} alt=""/>
+                    <h5>{hotel.name}</h5>
                     
-                    <span><i
-                        className="fa-solid fa-star"></i> <i className="fa-solid fa-star"></i> <i
-                        className="fa-solid fa-star"></i> <i className="fa-solid fa-star"></i> <i
-                        className="fa-solid fa-star"></i>
+                    <span>
+            <ReactStars
+                count={5}
+                value={formatNumber(hotel.rating_review && hotel.rating_review.rating)}
+                size={20}
+                color1={'#cccccc'}  
+                color2={'#ffd700'}  
+                edit={false}        
+           />
                     </span>
-                    <h4>₹ 6,299</h4>
+                    <h4>₹ {hotel.hotel_rate[0] && hotel.hotel_rate[0].rate}</h4>
                     <span className="per-night">Per Night</span>
                     <br/>
                     <button>SELECT STAY</button>
                     <hr/>
-                    <h5 className="rate-review"><span>4.2</span> Very Good</h5>
+                    <h5 className="rate-review"><span>{formatNumber(hotel.rating_review && hotel.rating_review.rating)}</span> Very Good</h5>
                     <hr/>
                     <p>.</p>
                     <hr/>
@@ -327,6 +383,7 @@ return(
 
                 </div>
             </div>
+        ))}
         </section>
 
     </maindiv>

@@ -1,10 +1,21 @@
 export function Rating({ rating }) {
+    console.log(77777, rating)
     const stars = [];
-    const fullStars = Math.floor(rating);
-    const hasHalfStar = rating % 1 !== 0;
+    let fullStars;
+    if(rating)
+    fullStars = Math.floor(rating);
+    else 
+    fullStars = 0
+
+    let hasHalfStar
+    if(rating)
+     hasHalfStar = rating % 1 !== 0;
+    else
+     hasHalfStar =0
   
     // Full stars
-    for (let i = 0; i < fullStars; i++) {
+    for (let i = 0; i < fullStars-1; i++) {
+      if(fullStars)
       stars.push(<span key={i} style={{ color: 'gold' }}>&#9733;</span>);
     }
   
