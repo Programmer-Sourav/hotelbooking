@@ -18,4 +18,7 @@ Features:
 8. Updating inventory
 9. Calculating prices etc.
 10. Worked with Google Maps APIs
-11. Worked with APIs etc. 
+11. Worked with APIs etc.
+
+Node.Js APIs link: 
+https://replit.com/@SouravNath2/HB-backend#index.js
