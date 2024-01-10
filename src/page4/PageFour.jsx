@@ -7,10 +7,11 @@ import { useContext, useState } from "react";
 import { AppContext } from "../contexts/AppContext";
 import { useParams } from "react-router-dom";
 import { calculateTax, calculateTotal, convertDateFormat, differenceBetweenDates, formatCheckoutDateTime, formatDateTime } from "../Utility/utility";
+import { selectRoomForReservation } from "../api/remote";
 
 export default function PageFour(){
   
-    const { hotels, start_date, end_date, adultCount, roomCount, roomTypeId, selectedDate, finalDate } = useContext(AppContext)
+    const { hotels, adultCount, roomCount, roomTypeId, selectedDate, finalDate,  dispatch, selectedRoomCode } = useContext(AppContext)
     const { id } = useParams()
 
     const [addBreakfastOption, setAddBreakfastOption] = useState("breakfast")
@@ -36,9 +37,9 @@ export default function PageFour(){
         setCouponCode(value)
     }
   
-    const roomByType = roomDetails && roomDetails.hotel_rate.find((room)=>(room.room_type_id._id===roomTypeId._id))
+    const roomByType = roomDetails && roomDetails.hotel_rate.find((room)=>(room.room_type_id._id===roomTypeId))
     const roomRate = roomByType.rate;
-    console.log(3456, roomRate, roomTypeId)
+    console.log(3456, roomRate, roomTypeId, selectedRoomCode)
 
     const checkoutDate = convertDateFormat(selectedDate);
     const checkinDate = convertDateFormat(finalDate)
@@ -255,7 +256,8 @@ export default function PageFour(){
                             </div>
                             
                             <div>
-                                <button className="pay-now">PAY NOW</button>
+                                {/** Basically, there may be two steps, once select room is clicked it mark reserved for the rooms, then if the user pays, it gets confirmed */}
+                                <button className="pay-now" onClick={()=>{selectRoomForReservation(dispatch, id, roomTypeId, selectedRoomCode, roomCount)}}>PAY NOW</button>
                             </div>
                         </section>
                     </div>

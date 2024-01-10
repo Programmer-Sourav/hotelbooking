@@ -32,8 +32,9 @@ const dummySimilarHotels = hotels.filter((hotel)=>hotel._id!==id)
 const navigate = useNavigate()
 
 const goToReviewPage = (roomTypeId, roomTypeCode) =>{
+    console.log(999, roomTypeId._id, roomTypeCode)
     navigate(`/hotels/review/${id}`)
-    setRoomTypeId(roomTypeId)
+    setRoomTypeId(roomTypeId._id)
     onSetSelectedRoomCode(roomTypeCode)
 }
 

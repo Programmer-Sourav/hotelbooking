@@ -82,10 +82,10 @@ export function differenceBetweenDates(endDate, startDate){
     start_date = new Date(startDateParts[2],startDateParts[1]-1, startDateParts[0])
     end_Date = new Date(endDateParts[2], endDateParts[1]-1, endDateParts[0])
     }
-    console.log(8888, startDate, endDate, start_date, end_Date)
+    //console.log(8888, startDate, endDate, start_date, end_Date)
     const difference = end_Date - start_date //it will calculate the difference in milliseconds
 
     const days = difference / (1000*60*60*24);
-    console.log(999, difference, days)
+    
     return Math.abs(days)
 }

@@ -42,8 +42,8 @@ async function getAllAminities(dispatch){
 }
 
 async function selectRoomForReservation(dispatch, hotelId, roomTypeId, room_type_id_code,  roomCount){
-    
-    const HOTEL_SELECT = `reservations/${hotelId}/${roomTypeId._id}/${room_type_id_code}/${roomCount}`
+   
+    const HOTEL_SELECT = `reservations/${hotelId}/${roomTypeId}/${room_type_id_code}/${roomCount}`
     const SELECT_ROOM = `${BASE_URL}${HOTEL_SELECT}`
     try {
         const response = await fetch(SELECT_ROOM, {
