@@ -11,13 +11,15 @@ import LeftNavigation from "./LeftNavigation"
 import { useContext, useEffect } from "react"
 import { AppContext } from "../contexts/AppContext"
 import { getAllAminities } from "../api/remote"
+import { useParams } from "react-router-dom";
 
 export default function PageTwo(){
 
+    const {city} = useParams()
+    
 const { priceRangeArrayForCheckbox, priceState, hotels, searchByBudgetState,
      budgetState, starState, ratingState, propertyState, onPropertyStateChange, 
      mmtValueState, onMMTStateChange, sortByValueChange, sortByState, dispatch, amnetesState, searchAmenityState} = useContext(AppContext)
-
 
 let filteredList = [...hotels];
 console.log(hotels, filteredList)
@@ -161,9 +163,9 @@ return(
             <div className="low-info-all">
                 <div>
                     <p><a href="#">Home</a> 
-                        Hotels and more in Goa</p>
+                        Hotels and more in {city}</p>
 
-                    <h3>Hotels, Villas, Apartments and more in Goa</h3>
+                    <h3>Hotels, Villas, Apartments and more in {city}</h3>
 
                 </div>
                

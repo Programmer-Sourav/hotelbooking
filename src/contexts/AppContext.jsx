@@ -24,6 +24,7 @@ export default function AppProvider({children}){
     const [packageCharge, setPackageCharge] = useState(0)
     const [roomTypeId, setRoomTypeId] = useState("")
     const [selectedRoomCode, setSelectedRoomCode] = useState("")
+   
 
 
 

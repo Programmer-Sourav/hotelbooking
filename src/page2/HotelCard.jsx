@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom"
 import { calculateTax, formatNumber } from "../Utility/utility"
 import ReactStars from "react-stars"
-
+import HotelPhoto from "./images/hotel-ar.jpg"
 export default function HotelCard({data}){
 
     console.log(1234, data)
@@ -19,19 +19,19 @@ export default function HotelCard({data}){
                             <div className="img-detail">
                                
                                 <div>
-                                    <img className="hotel-img" src="./images/hotel-ar.jpg" alt=""/>
+                                    <img className="hotel-img" src= {HotelPhoto} alt=""/>
                                     <div className="view-all-img">
                                         <div>
 
-                                            <img className="view-hotel" src="./images/hotel-ar.jpg" alt=""/>
+                                            <img className="view-hotel" src={HotelPhoto} alt=""/>
                                         </div>
                                         <div>
 
-                                            <img className="view-hotel" src="./images/view.jpg" alt=""/>
+                                            <img className="view-hotel" src={HotelPhoto} alt=""/>
                                         </div>
                                         <div>
 
-                                            <img className="view-hotel" src="./images/hotel-ar.jpg" alt=""/>
+                                            <img className="view-hotel" src={HotelPhoto} alt=""/>
                                         </div>
                                         <div className="detail-view">
                                             <a href="#">View All</a>
@@ -42,11 +42,9 @@ export default function HotelCard({data}){
                                 
                                 <div>
                                 <div className="rat-name-hotel">
-                                    <div>
+                                    <div class="hotel-and-star">
                                         <h4>{data.name}</h4>
 
-                                    </div>
-                                    <div>
                                         <ul className="rat-star">
                                            {/* <li><i className="fa-solid fa-star"></i></li> */}
                                           <ReactStars count={5} size={24} value={data.rating_review && data.rating_review.rating} color1={'#cccccc'} color2={'#FFD700'} edit={false} />
