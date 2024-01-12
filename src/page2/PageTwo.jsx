@@ -190,7 +190,7 @@ return(
                                 <option value="htl">Price-High to Low</option>
                                 <option value="userrating">User Rating-High to Low</option>
                             </select>
-                            <label for="">| Showing 1847 properties in Goa</label>
+                            <label for="">| Showing {hotels.length} properties in {city}</label>
 
                         </form>
 
@@ -222,7 +222,7 @@ return(
                 </div>
                     {/* <!-- right side --> */}
                     <div className="right-showing">
-                        <h2 className="show-property">Showing Properties in Goa</h2>
+                        <h2 className="show-property">Showing Properties in {city}</h2>
                         {/* <!-- card --> */}
                         {
                             sortedList.map((hotel)=>(
