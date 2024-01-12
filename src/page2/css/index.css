@@ -1,5 +1,6 @@
 body {
     width: 100%;
+    margin: 0;
 }
 
 /* header */
@@ -139,11 +140,24 @@ header {
 
 /*  */
 /* main main section */
+.main-second{
+    width: 100%;
+}
+.main-body-second{
+    background-color: #FFFFFF;
+    margin: 0px 30px;
+    border-radius: 0 0 10px 10px;
+}
+.main-body-second-header{
+    display: flex;
+}
 .parent-flex-p2 {
     display: flex;
     justify-content: space-between;
     background-color: #091D32;
     height: 90px;
+    width: 100%;
+
 }
 
 .flexbox-ptwo {

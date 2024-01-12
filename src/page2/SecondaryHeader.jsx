@@ -1,13 +1,16 @@
+import { useParams } from "react-router-dom"
+
 export default function SecondaryHeader(){
 
+    const { city} = useParams()
     return(
-        <section>
+      
                         
                         <div className="parent-flex-p2">
 
                             <div className="flexbox-ptwo">
                                 <p className="city-property">City, Area or Property</p>
-                                <input className="location-field-ptwo" type="text" placeholder="GOA"/>
+                                <input className="location-field-ptwo" type="text" placeholder={city}/>
 
                             </div>
                       
@@ -198,6 +201,6 @@ export default function SecondaryHeader(){
 
                             </div>
                         </div>
-                    </section>
+                  
     )
 }

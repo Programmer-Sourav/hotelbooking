@@ -135,24 +135,16 @@ return(
     <Header/>
   
 
-    <main>
+    <main-second>
         <section>
 
             <div className="main-detail-body">
 
-
-
-                <div className="main-body">
-                   
-                    <SecondaryHeader/>
-
-
+                <div className="main-body-second">
+                
                     <section>
-
+                    <SecondaryHeader/>
                     </section>
-
-
-
 
                 </div>
 
@@ -235,7 +227,7 @@ return(
                 </div>
         </section>
 
-    </main>
+    </main-second>
 
 
     <footer>

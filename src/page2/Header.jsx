@@ -8,7 +8,7 @@ export default function Header(){
 
     return(
       
-            <header className="header">
+    <header className="header">
        
        <div className="">
            <h4 className="header-name">make<span className="my"><i>more</i></span>trip</h4>
