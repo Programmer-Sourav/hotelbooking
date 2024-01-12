@@ -5,7 +5,8 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 It is a Hotel Booking Application - MMT (Make More Trip)
 
-Tech Stack Used: React.Js for front-end and node.js for back-end, mongoDB.
+Tech Stack Used: 
+React.Js for front-end and node.js for back-end, mongoDB.
 
 Features: 
 1. Worked with Dates, like finding hotel between a date range, difference between dates etc.
